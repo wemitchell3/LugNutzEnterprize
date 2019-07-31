@@ -78,7 +78,6 @@ namespace LugNutzEnterprize.Areas.Identity.Pages.Account
                 var user = new ApplicationUser {
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
-                    StreetAddress = Input.StreetAddress,
                     UserName = Input.Email,
                     Email = Input.Email
                 };
