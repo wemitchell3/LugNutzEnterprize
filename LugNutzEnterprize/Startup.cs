@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using LugNutzEnterprize.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using LugNutzEnterprize.Models;
 
 namespace LugNutzEnterprize
 {
@@ -38,7 +39,7 @@ namespace LugNutzEnterprize
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<ApplicationUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
