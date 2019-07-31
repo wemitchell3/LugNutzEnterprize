@@ -11,7 +11,7 @@ namespace LugNutzEnterprize.Models
         [Key]
         public int VehicleId { get; set; }
         [Required]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         [Required]
         public int VehicleMileage { get; set; }
         public string ABS { get; set; }
@@ -159,6 +159,7 @@ namespace LugNutzEnterprize.Models
         public string WheelSizeFront { get; set; }
         public string WheelSizeRear { get; set; }
         public string Wheels { get; set; }
-        public string Windows { get; set; }     
+        public string Windows { get; set; }
     }
 }
+
