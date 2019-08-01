@@ -28,7 +28,7 @@ namespace LugNutzEnterprize.Controllers
         {
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
             var applicationDbContext = _context.Vehicle.Include(v => v.User).Where(v => v.UserId == currentUser.Id);
-            return View(await _context.Vehicle.ToListAsync());
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Vehicles/Details/5
