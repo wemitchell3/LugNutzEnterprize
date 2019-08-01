@@ -1,5 +1,6 @@
 ﻿using System;
 using LugNutzEnterprize.Data;
+using LugNutzEnterprize.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;

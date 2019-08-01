@@ -1,5 +1,6 @@
 ﻿using LugNutzEnterprize.Data;
 using LugNutzEnterprize.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace LugNutzEnterprize.Controllers
 {
+    [Authorize]
     public class VehiclesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -24,6 +26,8 @@ namespace LugNutzEnterprize.Controllers
         // GET: Vehicles
         public async Task<IActionResult> Index()
         {
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            var applicationDbContext = _context.Vehicle.Include(v => v.User).Where(v => v.UserId == currentUser.Id);
             return View(await _context.Vehicle.ToListAsync());
         }
 

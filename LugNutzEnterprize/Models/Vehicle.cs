@@ -12,6 +12,8 @@ namespace LugNutzEnterprize.Models
         public int VehicleId { get; set; }
         [Required]
         public string UserId { get; set; }
+        
+        public ApplicationUser User { get; set; }
         [Required]
         public int VehicleMileage { get; set; }
         public string ABS { get; set; }

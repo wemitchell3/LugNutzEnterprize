@@ -13,6 +13,9 @@ namespace LugNutzEnterprize.Models
         public string UserId { get; set; }
 
         [Required]
+        public ApplicationUser User { get; set; }
+
+        [Required]
         [DataType(DataType.Date)]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Display(Name = "Date Created")]

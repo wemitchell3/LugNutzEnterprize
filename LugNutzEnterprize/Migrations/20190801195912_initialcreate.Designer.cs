@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LugNutzEnterprize.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190731231924_UserIdUpdate")]
-    partial class UserIdUpdate
+    [Migration("20190801195912_initialcreate")]
+    partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,6 +88,52 @@ namespace LugNutzEnterprize.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "6b62dd71-1bb3-4bcc-bb2d-ce466f29eb65",
+                            Email = "admin@admin.com",
+                            EmailConfirmed = true,
+                            FirstName = "Admina",
+                            IsAdmin = false,
+                            IsMasterMechanic = false,
+                            LastName = "Straytor",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEqEZ6eNA9btWiGTEbGOo7aOYdHVsr8fEp1QYXKTK6P7OpTcVSPMr31GvPgIw7fixw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
+                            StreetAddress = "123 Infinity Way",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com",
+                            Zip = 0
+                        },
+                        new
+                        {
+                            Id = "45670330-ffff-ffff-ffff-ffffffffffff",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e0d13f81-58bf-4cb5-94da-da29a9d4c5d6",
+                            Email = "billy@billy.com",
+                            EmailConfirmed = true,
+                            FirstName = "Billy",
+                            IsAdmin = false,
+                            IsMasterMechanic = false,
+                            LastName = "M",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "BILLY@BILLY.COM",
+                            NormalizedUserName = "BILLY@BILLY.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPRvWfkjGfDAac6s1sctTKktK/MEbPpUejdVzuX+OcUcmgFSfzj2ewdnDHEm6CwfNw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7f004300-a4d9-48e9-9ebb-8803db794577",
+                            StreetAddress = "33 Lover's Lane",
+                            TwoFactorEnabled = false,
+                            UserName = "billy@billy.com",
+                            Zip = 0
+                        });
                 });
 
             modelBuilder.Entity("LugNutzEnterprize.Models.MaintenanceTask", b =>
@@ -138,6 +184,8 @@ namespace LugNutzEnterprize.Migrations
                         .IsRequired();
 
                     b.HasKey("MessageId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Message");
                 });
@@ -444,6 +492,8 @@ namespace LugNutzEnterprize.Migrations
 
                     b.HasKey("VehicleId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Vehicle");
                 });
 
@@ -458,6 +508,9 @@ namespace LugNutzEnterprize.Migrations
 
                     b.Property<bool>("IsComplete");
 
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
                     b.Property<int>("VehicleId");
 
                     b.Property<string>("WishListDescription")
@@ -467,6 +520,8 @@ namespace LugNutzEnterprize.Migrations
                         .IsRequired();
 
                     b.HasKey("WishListId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("WishList");
                 });
@@ -583,6 +638,30 @@ namespace LugNutzEnterprize.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("LugNutzEnterprize.Models.Message", b =>
+                {
+                    b.HasOne("LugNutzEnterprize.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("LugNutzEnterprize.Models.Vehicle", b =>
+                {
+                    b.HasOne("LugNutzEnterprize.Models.ApplicationUser", "User")
+                        .WithMany("Vehicles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("LugNutzEnterprize.Models.WishList", b =>
+                {
+                    b.HasOne("LugNutzEnterprize.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

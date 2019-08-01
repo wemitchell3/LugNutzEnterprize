@@ -13,6 +13,9 @@ namespace LugNutzEnterprize.Models
         public int VehicleId { get; set; }
 
         [Required]
+        public ApplicationUser User { get; set; }
+
+        [Required]
         public string WishListTitle { get; set; }
 
         [Required]
