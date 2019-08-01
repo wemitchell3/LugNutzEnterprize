@@ -4,36 +4,21 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Create Vehicle Manually or Automatically?</h1>
 
-<h4>Vehicle</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateConfirmed" asp-controller="Vehicles" method="post">
+        <form asp-action="CreateManually" asp-controller="Vehicles" method="get">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ModelYear" class="control-label"></label>
-                <input asp-for="ModelYear" class="form-control" />
-                <span asp-validation-for="ModelYear" class="text-danger"></span>
-            </div>            
-            <div class="form-group">
-                <label asp-for="Make" class="control-label"></label>
-                <input asp-for="Make" class="form-control" />
-                <span asp-validation-for="Make" class="text-danger"></span>
-            </div>            
-            <div class="form-group">
-                <label asp-for="Model" class="control-label"></label>
-                <input asp-for="Model" class="form-control" />
-                <span asp-validation-for="Model" class="text-danger"></span>
+                <input type="submit" value="Manually" class="btn btn-primary" />
             </div>
+        </form>
+        <form asp-action="CreateAutomaticallyVin" asp-controller="Vehicles" method="get">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="VehicleMileage" class="control-label"></label>
-                <input asp-for="VehicleMileage" class="form-control" />
-                <span asp-validation-for="VehicleMileage" class="text-danger"></span>
-            </div>            
-            <div class="form-group">
-                <input type="submit" value="Submit" class="btn btn-primary" />
+                <input type="submit" value="Create Automatically" class="btn btn-primary" />
             </div>
         </form>
     </div>
