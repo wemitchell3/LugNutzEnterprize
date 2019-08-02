@@ -6,889 +6,744 @@
 
 <h1>ApiGet</h1>
 
-<div>
-    <h4>Vehicle</h4>
-    <form asp-action="CreateConfirmed" asp-controller="Vehicles" method="post">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <input type="submit" value="Save Vehicle" class="btn btn-primary" />
-        </div>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.User)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.User.Id)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.VehicleMileage)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.VehicleMileage)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ABS)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ABS)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ActiveSafetySysNote)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ActiveSafetySysNote)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AdaptiveCruiseControl)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AdaptiveCruiseControl)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AdaptiveDrivingBeam)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AdaptiveDrivingBeam)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AdaptiveHeadlights)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AdaptiveHeadlights)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AdditionalErrorText)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AdditionalErrorText)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AirBagLocCurtain)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AirBagLocCurtain)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AirBagLocFront)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AirBagLocFront)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AirBagLocKnee)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AirBagLocKnee)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AirBagLocSeatCushion)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AirBagLocSeatCushion)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AirBagLocSide)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AirBagLocSide)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AutoReverseSystem)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AutoReverseSystem)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AutomaticPedestrianAlertingSound)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AutomaticPedestrianAlertingSound)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AxleConfiguration)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AxleConfiguration)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Axles)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Axles)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BasePrice)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BasePrice)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BatteryA)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BatteryA)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BatteryA_to)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BatteryA_to)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BatteryCells)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BatteryCells)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BatteryInfo)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BatteryInfo)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BatteryKWh)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BatteryKWh)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BatteryKWh_to)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BatteryKWh_to)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BatteryModules)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BatteryModules)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BatteryPacks)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BatteryPacks)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BatteryType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BatteryType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BatteryV)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BatteryV)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BatteryV_to)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BatteryV_to)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BedLengthIN)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BedLengthIN)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BedType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BedType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BlindSpotMon)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BlindSpotMon)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BodyCabType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BodyCabType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BodyClass)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BodyClass)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BrakeSystemDesc)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BrakeSystemDesc)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BrakeSystemType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BrakeSystemType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BusFloorConfigType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BusFloorConfigType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BusLength)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BusLength)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BusType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BusType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.CAN_AACN)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.CAN_AACN)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.CIB)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.CIB)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.CashForClunkers)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.CashForClunkers)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ChargerLevel)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ChargerLevel)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ChargerPowerKW)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ChargerPowerKW)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.CoolingType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.CoolingType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.CurbWeightLB)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.CurbWeightLB)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.CustomMotorcycleType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.CustomMotorcycleType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.DaytimeRunningLight)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DaytimeRunningLight)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.DestinationMarket)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DestinationMarket)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.DisplacementCC)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DisplacementCC)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.DisplacementCI)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DisplacementCI)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.DisplacementL)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DisplacementL)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Doors)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Doors)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.DriveType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DriveType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.DriverAssist)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DriverAssist)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.DynamicBrakeSupport)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DynamicBrakeSupport)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.EDR)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EDR)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ESC)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ESC)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.EVDriveUnit)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EVDriveUnit)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ElectrificationLevel)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ElectrificationLevel)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.EngineConfiguration)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EngineConfiguration)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.EngineCycles)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EngineCycles)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.EngineCylinders)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EngineCylinders)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.EngineHP)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EngineHP)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.EngineHP_to)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EngineHP_to)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.EngineKW)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EngineKW)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.EngineManufacturer)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EngineManufacturer)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.EngineModel)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EngineModel)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.EntertainmentSystem)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EntertainmentSystem)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ErrorCode)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ErrorCode)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ErrorText)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ErrorText)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ForwardCollisionWarning)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ForwardCollisionWarning)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.FuelInjectionType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.FuelInjectionType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.FuelTypePrimary)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.FuelTypePrimary)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.FuelTypeSecondary)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.FuelTypeSecondary)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.GCWR)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.GCWR)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.GCWR_to)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.GCWR_to)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.GVWR)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.GVWR)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.GVWR_to)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.GVWR_to)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.KeylessIgnition)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.KeylessIgnition)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.LaneDepartureWarning)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.LaneDepartureWarning)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.LaneKeepSystem)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.LaneKeepSystem)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.LowerBeamHeadlampLightSource)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.LowerBeamHeadlampLightSource)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Make)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Make)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Manufacturer)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Manufacturer)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ManufacturerId)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ManufacturerId)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Model)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Model)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ModelYear)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ModelYear)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MotorcycleChassisType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MotorcycleChassisType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MotorcycleSuspensionType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MotorcycleSuspensionType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.NCSABodyType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.NCSABodyType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.NCSAMake)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.NCSAMake)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.NCSAMapExcApprovedBy)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.NCSAMapExcApprovedBy)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.NCSAMapExcApprovedOn)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.NCSAMapExcApprovedOn)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.NCSAMappingException)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.NCSAMappingException)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.NCSAModel)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.NCSAModel)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.NCSANote)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.NCSANote)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Note)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Note)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.OtherBusInfo)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.OtherBusInfo)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.OtherEngineInfo)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.OtherEngineInfo)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.OtherMotorcycleInfo)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.OtherMotorcycleInfo)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.OtherRestraintSystemInfo)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.OtherRestraintSystemInfo)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.OtherTrailerInfo)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.OtherTrailerInfo)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ParkAssist)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ParkAssist)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PedestrianAutomaticEmergencyBraking)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PedestrianAutomaticEmergencyBraking)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PlantCity)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PlantCity)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PlantCompanyName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PlantCompanyName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PlantCountry)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PlantCountry)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PlantState)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PlantState)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PossibleValues)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PossibleValues)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Pretensioner)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Pretensioner)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.RearCrossTrafficAlert)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.RearCrossTrafficAlert)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.RearVisibilitySystem)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.RearVisibilitySystem)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.SAEAutomationLevel)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.SAEAutomationLevel)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.SAEAutomationLevel_to)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.SAEAutomationLevel_to)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.SeatBeltsAll)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.SeatBeltsAll)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.SeatRows)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.SeatRows)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Seats)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Seats)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.SemiautomaticHeadlampBeamSwitching)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.SemiautomaticHeadlampBeamSwitching)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Series)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Series)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Series2)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Series2)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.SteeringLocation)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.SteeringLocation)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.SuggestedVIN)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.SuggestedVIN)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.TPMS)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.TPMS)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.TopSpeedMPH)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.TopSpeedMPH)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.TrackWidth)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.TrackWidth)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.TractionControl)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.TractionControl)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.TrailerBodyType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.TrailerBodyType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.TrailerLength)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.TrailerLength)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.TrailerType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.TrailerType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.TransmissionSpeeds)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.TransmissionSpeeds)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.TransmissionStyle)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.TransmissionStyle)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Trim)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Trim)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Trim2)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Trim2)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Turbo)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Turbo)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.VIN)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.VIN)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ValveTrainDesign)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ValveTrainDesign)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.VehicleType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.VehicleType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.WheelBaseLong)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.WheelBaseLong)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.WheelBaseShort)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.WheelBaseShort)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.WheelBaseType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.WheelBaseType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.WheelSizeFront)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.WheelSizeFront)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.WheelSizeRear)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.WheelSizeRear)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Wheels)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Wheels)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Windows)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Windows)
-            </dd>
-        </dl>
-    </form>
+<h4>Vehicle</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateConfirmed">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="VehicleMileage" class="control-label"></label>
+                <input asp-for="VehicleMileage" class="form-control" />
+                <span asp-validation-for="VehicleMileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ABS" class="control-label"></label>
+                <input asp-for="ABS" class="form-control" />
+                <span asp-validation-for="ABS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActiveSafetySysNote" class="control-label"></label>
+                <input asp-for="ActiveSafetySysNote" class="form-control" />
+                <span asp-validation-for="ActiveSafetySysNote" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdaptiveCruiseControl" class="control-label"></label>
+                <input asp-for="AdaptiveCruiseControl" class="form-control" />
+                <span asp-validation-for="AdaptiveCruiseControl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdaptiveDrivingBeam" class="control-label"></label>
+                <input asp-for="AdaptiveDrivingBeam" class="form-control" />
+                <span asp-validation-for="AdaptiveDrivingBeam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdaptiveHeadlights" class="control-label"></label>
+                <input asp-for="AdaptiveHeadlights" class="form-control" />
+                <span asp-validation-for="AdaptiveHeadlights" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdditionalErrorText" class="control-label"></label>
+                <input asp-for="AdditionalErrorText" class="form-control" />
+                <span asp-validation-for="AdditionalErrorText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirBagLocCurtain" class="control-label"></label>
+                <input asp-for="AirBagLocCurtain" class="form-control" />
+                <span asp-validation-for="AirBagLocCurtain" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirBagLocFront" class="control-label"></label>
+                <input asp-for="AirBagLocFront" class="form-control" />
+                <span asp-validation-for="AirBagLocFront" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirBagLocKnee" class="control-label"></label>
+                <input asp-for="AirBagLocKnee" class="form-control" />
+                <span asp-validation-for="AirBagLocKnee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirBagLocSeatCushion" class="control-label"></label>
+                <input asp-for="AirBagLocSeatCushion" class="form-control" />
+                <span asp-validation-for="AirBagLocSeatCushion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirBagLocSide" class="control-label"></label>
+                <input asp-for="AirBagLocSide" class="form-control" />
+                <span asp-validation-for="AirBagLocSide" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AutoReverseSystem" class="control-label"></label>
+                <input asp-for="AutoReverseSystem" class="form-control" />
+                <span asp-validation-for="AutoReverseSystem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AutomaticPedestrianAlertingSound" class="control-label"></label>
+                <input asp-for="AutomaticPedestrianAlertingSound" class="form-control" />
+                <span asp-validation-for="AutomaticPedestrianAlertingSound" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AxleConfiguration" class="control-label"></label>
+                <input asp-for="AxleConfiguration" class="form-control" />
+                <span asp-validation-for="AxleConfiguration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Axles" class="control-label"></label>
+                <input asp-for="Axles" class="form-control" />
+                <span asp-validation-for="Axles" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BasePrice" class="control-label"></label>
+                <input asp-for="BasePrice" class="form-control" />
+                <span asp-validation-for="BasePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryA" class="control-label"></label>
+                <input asp-for="BatteryA" class="form-control" />
+                <span asp-validation-for="BatteryA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryA_to" class="control-label"></label>
+                <input asp-for="BatteryA_to" class="form-control" />
+                <span asp-validation-for="BatteryA_to" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryCells" class="control-label"></label>
+                <input asp-for="BatteryCells" class="form-control" />
+                <span asp-validation-for="BatteryCells" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryInfo" class="control-label"></label>
+                <input asp-for="BatteryInfo" class="form-control" />
+                <span asp-validation-for="BatteryInfo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryKWh" class="control-label"></label>
+                <input asp-for="BatteryKWh" class="form-control" />
+                <span asp-validation-for="BatteryKWh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryKWh_to" class="control-label"></label>
+                <input asp-for="BatteryKWh_to" class="form-control" />
+                <span asp-validation-for="BatteryKWh_to" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryModules" class="control-label"></label>
+                <input asp-for="BatteryModules" class="form-control" />
+                <span asp-validation-for="BatteryModules" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryPacks" class="control-label"></label>
+                <input asp-for="BatteryPacks" class="form-control" />
+                <span asp-validation-for="BatteryPacks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryType" class="control-label"></label>
+                <input asp-for="BatteryType" class="form-control" />
+                <span asp-validation-for="BatteryType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryV" class="control-label"></label>
+                <input asp-for="BatteryV" class="form-control" />
+                <span asp-validation-for="BatteryV" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BatteryV_to" class="control-label"></label>
+                <input asp-for="BatteryV_to" class="form-control" />
+                <span asp-validation-for="BatteryV_to" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BedLengthIN" class="control-label"></label>
+                <input asp-for="BedLengthIN" class="form-control" />
+                <span asp-validation-for="BedLengthIN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BedType" class="control-label"></label>
+                <input asp-for="BedType" class="form-control" />
+                <span asp-validation-for="BedType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlindSpotMon" class="control-label"></label>
+                <input asp-for="BlindSpotMon" class="form-control" />
+                <span asp-validation-for="BlindSpotMon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BodyCabType" class="control-label"></label>
+                <input asp-for="BodyCabType" class="form-control" />
+                <span asp-validation-for="BodyCabType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BodyClass" class="control-label"></label>
+                <input asp-for="BodyClass" class="form-control" />
+                <span asp-validation-for="BodyClass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrakeSystemDesc" class="control-label"></label>
+                <input asp-for="BrakeSystemDesc" class="form-control" />
+                <span asp-validation-for="BrakeSystemDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrakeSystemType" class="control-label"></label>
+                <input asp-for="BrakeSystemType" class="form-control" />
+                <span asp-validation-for="BrakeSystemType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusFloorConfigType" class="control-label"></label>
+                <input asp-for="BusFloorConfigType" class="form-control" />
+                <span asp-validation-for="BusFloorConfigType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusLength" class="control-label"></label>
+                <input asp-for="BusLength" class="form-control" />
+                <span asp-validation-for="BusLength" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusType" class="control-label"></label>
+                <input asp-for="BusType" class="form-control" />
+                <span asp-validation-for="BusType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CAN_AACN" class="control-label"></label>
+                <input asp-for="CAN_AACN" class="form-control" />
+                <span asp-validation-for="CAN_AACN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CIB" class="control-label"></label>
+                <input asp-for="CIB" class="form-control" />
+                <span asp-validation-for="CIB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CashForClunkers" class="control-label"></label>
+                <input asp-for="CashForClunkers" class="form-control" />
+                <span asp-validation-for="CashForClunkers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChargerLevel" class="control-label"></label>
+                <input asp-for="ChargerLevel" class="form-control" />
+                <span asp-validation-for="ChargerLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChargerPowerKW" class="control-label"></label>
+                <input asp-for="ChargerPowerKW" class="form-control" />
+                <span asp-validation-for="ChargerPowerKW" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoolingType" class="control-label"></label>
+                <input asp-for="CoolingType" class="form-control" />
+                <span asp-validation-for="CoolingType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurbWeightLB" class="control-label"></label>
+                <input asp-for="CurbWeightLB" class="form-control" />
+                <span asp-validation-for="CurbWeightLB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomMotorcycleType" class="control-label"></label>
+                <input asp-for="CustomMotorcycleType" class="form-control" />
+                <span asp-validation-for="CustomMotorcycleType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DaytimeRunningLight" class="control-label"></label>
+                <input asp-for="DaytimeRunningLight" class="form-control" />
+                <span asp-validation-for="DaytimeRunningLight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationMarket" class="control-label"></label>
+                <input asp-for="DestinationMarket" class="form-control" />
+                <span asp-validation-for="DestinationMarket" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DisplacementCC" class="control-label"></label>
+                <input asp-for="DisplacementCC" class="form-control" />
+                <span asp-validation-for="DisplacementCC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DisplacementCI" class="control-label"></label>
+                <input asp-for="DisplacementCI" class="form-control" />
+                <span asp-validation-for="DisplacementCI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DisplacementL" class="control-label"></label>
+                <input asp-for="DisplacementL" class="form-control" />
+                <span asp-validation-for="DisplacementL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doors" class="control-label"></label>
+                <input asp-for="Doors" class="form-control" />
+                <span asp-validation-for="Doors" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DriveType" class="control-label"></label>
+                <input asp-for="DriveType" class="form-control" />
+                <span asp-validation-for="DriveType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DriverAssist" class="control-label"></label>
+                <input asp-for="DriverAssist" class="form-control" />
+                <span asp-validation-for="DriverAssist" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DynamicBrakeSupport" class="control-label"></label>
+                <input asp-for="DynamicBrakeSupport" class="form-control" />
+                <span asp-validation-for="DynamicBrakeSupport" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EDR" class="control-label"></label>
+                <input asp-for="EDR" class="form-control" />
+                <span asp-validation-for="EDR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ESC" class="control-label"></label>
+                <input asp-for="ESC" class="form-control" />
+                <span asp-validation-for="ESC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EVDriveUnit" class="control-label"></label>
+                <input asp-for="EVDriveUnit" class="form-control" />
+                <span asp-validation-for="EVDriveUnit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ElectrificationLevel" class="control-label"></label>
+                <input asp-for="ElectrificationLevel" class="form-control" />
+                <span asp-validation-for="ElectrificationLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineConfiguration" class="control-label"></label>
+                <input asp-for="EngineConfiguration" class="form-control" />
+                <span asp-validation-for="EngineConfiguration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineCycles" class="control-label"></label>
+                <input asp-for="EngineCycles" class="form-control" />
+                <span asp-validation-for="EngineCycles" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineCylinders" class="control-label"></label>
+                <input asp-for="EngineCylinders" class="form-control" />
+                <span asp-validation-for="EngineCylinders" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineHP" class="control-label"></label>
+                <input asp-for="EngineHP" class="form-control" />
+                <span asp-validation-for="EngineHP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineHP_to" class="control-label"></label>
+                <input asp-for="EngineHP_to" class="form-control" />
+                <span asp-validation-for="EngineHP_to" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineKW" class="control-label"></label>
+                <input asp-for="EngineKW" class="form-control" />
+                <span asp-validation-for="EngineKW" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineManufacturer" class="control-label"></label>
+                <input asp-for="EngineManufacturer" class="form-control" />
+                <span asp-validation-for="EngineManufacturer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineModel" class="control-label"></label>
+                <input asp-for="EngineModel" class="form-control" />
+                <span asp-validation-for="EngineModel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EntertainmentSystem" class="control-label"></label>
+                <input asp-for="EntertainmentSystem" class="form-control" />
+                <span asp-validation-for="EntertainmentSystem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorCode" class="control-label"></label>
+                <input asp-for="ErrorCode" class="form-control" />
+                <span asp-validation-for="ErrorCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorText" class="control-label"></label>
+                <input asp-for="ErrorText" class="form-control" />
+                <span asp-validation-for="ErrorText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ForwardCollisionWarning" class="control-label"></label>
+                <input asp-for="ForwardCollisionWarning" class="form-control" />
+                <span asp-validation-for="ForwardCollisionWarning" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FuelInjectionType" class="control-label"></label>
+                <input asp-for="FuelInjectionType" class="form-control" />
+                <span asp-validation-for="FuelInjectionType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FuelTypePrimary" class="control-label"></label>
+                <input asp-for="FuelTypePrimary" class="form-control" />
+                <span asp-validation-for="FuelTypePrimary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FuelTypeSecondary" class="control-label"></label>
+                <input asp-for="FuelTypeSecondary" class="form-control" />
+                <span asp-validation-for="FuelTypeSecondary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GCWR" class="control-label"></label>
+                <input asp-for="GCWR" class="form-control" />
+                <span asp-validation-for="GCWR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GCWR_to" class="control-label"></label>
+                <input asp-for="GCWR_to" class="form-control" />
+                <span asp-validation-for="GCWR_to" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GVWR" class="control-label"></label>
+                <input asp-for="GVWR" class="form-control" />
+                <span asp-validation-for="GVWR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GVWR_to" class="control-label"></label>
+                <input asp-for="GVWR_to" class="form-control" />
+                <span asp-validation-for="GVWR_to" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KeylessIgnition" class="control-label"></label>
+                <input asp-for="KeylessIgnition" class="form-control" />
+                <span asp-validation-for="KeylessIgnition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LaneDepartureWarning" class="control-label"></label>
+                <input asp-for="LaneDepartureWarning" class="form-control" />
+                <span asp-validation-for="LaneDepartureWarning" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LaneKeepSystem" class="control-label"></label>
+                <input asp-for="LaneKeepSystem" class="form-control" />
+                <span asp-validation-for="LaneKeepSystem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LowerBeamHeadlampLightSource" class="control-label"></label>
+                <input asp-for="LowerBeamHeadlampLightSource" class="form-control" />
+                <span asp-validation-for="LowerBeamHeadlampLightSource" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Make" class="control-label"></label>
+                <input asp-for="Make" class="form-control" />
+                <span asp-validation-for="Make" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacturer" class="control-label"></label>
+                <input asp-for="Manufacturer" class="form-control" />
+                <span asp-validation-for="Manufacturer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ManufacturerId" class="control-label"></label>
+                <input asp-for="ManufacturerId" class="form-control" />
+                <span asp-validation-for="ManufacturerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModelYear" class="control-label"></label>
+                <input asp-for="ModelYear" class="form-control" />
+                <span asp-validation-for="ModelYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MotorcycleChassisType" class="control-label"></label>
+                <input asp-for="MotorcycleChassisType" class="form-control" />
+                <span asp-validation-for="MotorcycleChassisType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MotorcycleSuspensionType" class="control-label"></label>
+                <input asp-for="MotorcycleSuspensionType" class="form-control" />
+                <span asp-validation-for="MotorcycleSuspensionType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NCSABodyType" class="control-label"></label>
+                <input asp-for="NCSABodyType" class="form-control" />
+                <span asp-validation-for="NCSABodyType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NCSAMake" class="control-label"></label>
+                <input asp-for="NCSAMake" class="form-control" />
+                <span asp-validation-for="NCSAMake" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NCSAMapExcApprovedBy" class="control-label"></label>
+                <input asp-for="NCSAMapExcApprovedBy" class="form-control" />
+                <span asp-validation-for="NCSAMapExcApprovedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NCSAMapExcApprovedOn" class="control-label"></label>
+                <input asp-for="NCSAMapExcApprovedOn" class="form-control" />
+                <span asp-validation-for="NCSAMapExcApprovedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NCSAMappingException" class="control-label"></label>
+                <input asp-for="NCSAMappingException" class="form-control" />
+                <span asp-validation-for="NCSAMappingException" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NCSAModel" class="control-label"></label>
+                <input asp-for="NCSAModel" class="form-control" />
+                <span asp-validation-for="NCSAModel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NCSANote" class="control-label"></label>
+                <input asp-for="NCSANote" class="form-control" />
+                <span asp-validation-for="NCSANote" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note" class="control-label"></label>
+                <input asp-for="Note" class="form-control" />
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherBusInfo" class="control-label"></label>
+                <input asp-for="OtherBusInfo" class="form-control" />
+                <span asp-validation-for="OtherBusInfo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherEngineInfo" class="control-label"></label>
+                <input asp-for="OtherEngineInfo" class="form-control" />
+                <span asp-validation-for="OtherEngineInfo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherMotorcycleInfo" class="control-label"></label>
+                <input asp-for="OtherMotorcycleInfo" class="form-control" />
+                <span asp-validation-for="OtherMotorcycleInfo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherRestraintSystemInfo" class="control-label"></label>
+                <input asp-for="OtherRestraintSystemInfo" class="form-control" />
+                <span asp-validation-for="OtherRestraintSystemInfo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherTrailerInfo" class="control-label"></label>
+                <input asp-for="OtherTrailerInfo" class="form-control" />
+                <span asp-validation-for="OtherTrailerInfo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParkAssist" class="control-label"></label>
+                <input asp-for="ParkAssist" class="form-control" />
+                <span asp-validation-for="ParkAssist" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PedestrianAutomaticEmergencyBraking" class="control-label"></label>
+                <input asp-for="PedestrianAutomaticEmergencyBraking" class="form-control" />
+                <span asp-validation-for="PedestrianAutomaticEmergencyBraking" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlantCity" class="control-label"></label>
+                <input asp-for="PlantCity" class="form-control" />
+                <span asp-validation-for="PlantCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlantCompanyName" class="control-label"></label>
+                <input asp-for="PlantCompanyName" class="form-control" />
+                <span asp-validation-for="PlantCompanyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlantCountry" class="control-label"></label>
+                <input asp-for="PlantCountry" class="form-control" />
+                <span asp-validation-for="PlantCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlantState" class="control-label"></label>
+                <input asp-for="PlantState" class="form-control" />
+                <span asp-validation-for="PlantState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PossibleValues" class="control-label"></label>
+                <input asp-for="PossibleValues" class="form-control" />
+                <span asp-validation-for="PossibleValues" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pretensioner" class="control-label"></label>
+                <input asp-for="Pretensioner" class="form-control" />
+                <span asp-validation-for="Pretensioner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RearCrossTrafficAlert" class="control-label"></label>
+                <input asp-for="RearCrossTrafficAlert" class="form-control" />
+                <span asp-validation-for="RearCrossTrafficAlert" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RearVisibilitySystem" class="control-label"></label>
+                <input asp-for="RearVisibilitySystem" class="form-control" />
+                <span asp-validation-for="RearVisibilitySystem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SAEAutomationLevel" class="control-label"></label>
+                <input asp-for="SAEAutomationLevel" class="form-control" />
+                <span asp-validation-for="SAEAutomationLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SAEAutomationLevel_to" class="control-label"></label>
+                <input asp-for="SAEAutomationLevel_to" class="form-control" />
+                <span asp-validation-for="SAEAutomationLevel_to" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatBeltsAll" class="control-label"></label>
+                <input asp-for="SeatBeltsAll" class="form-control" />
+                <span asp-validation-for="SeatBeltsAll" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatRows" class="control-label"></label>
+                <input asp-for="SeatRows" class="form-control" />
+                <span asp-validation-for="SeatRows" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seats" class="control-label"></label>
+                <input asp-for="Seats" class="form-control" />
+                <span asp-validation-for="Seats" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SemiautomaticHeadlampBeamSwitching" class="control-label"></label>
+                <input asp-for="SemiautomaticHeadlampBeamSwitching" class="form-control" />
+                <span asp-validation-for="SemiautomaticHeadlampBeamSwitching" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Series" class="control-label"></label>
+                <input asp-for="Series" class="form-control" />
+                <span asp-validation-for="Series" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Series2" class="control-label"></label>
+                <input asp-for="Series2" class="form-control" />
+                <span asp-validation-for="Series2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SteeringLocation" class="control-label"></label>
+                <input asp-for="SteeringLocation" class="form-control" />
+                <span asp-validation-for="SteeringLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SuggestedVIN" class="control-label"></label>
+                <input asp-for="SuggestedVIN" class="form-control" />
+                <span asp-validation-for="SuggestedVIN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TPMS" class="control-label"></label>
+                <input asp-for="TPMS" class="form-control" />
+                <span asp-validation-for="TPMS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TopSpeedMPH" class="control-label"></label>
+                <input asp-for="TopSpeedMPH" class="form-control" />
+                <span asp-validation-for="TopSpeedMPH" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrackWidth" class="control-label"></label>
+                <input asp-for="TrackWidth" class="form-control" />
+                <span asp-validation-for="TrackWidth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TractionControl" class="control-label"></label>
+                <input asp-for="TractionControl" class="form-control" />
+                <span asp-validation-for="TractionControl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrailerBodyType" class="control-label"></label>
+                <input asp-for="TrailerBodyType" class="form-control" />
+                <span asp-validation-for="TrailerBodyType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrailerLength" class="control-label"></label>
+                <input asp-for="TrailerLength" class="form-control" />
+                <span asp-validation-for="TrailerLength" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrailerType" class="control-label"></label>
+                <input asp-for="TrailerType" class="form-control" />
+                <span asp-validation-for="TrailerType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransmissionSpeeds" class="control-label"></label>
+                <input asp-for="TransmissionSpeeds" class="form-control" />
+                <span asp-validation-for="TransmissionSpeeds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransmissionStyle" class="control-label"></label>
+                <input asp-for="TransmissionStyle" class="form-control" />
+                <span asp-validation-for="TransmissionStyle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trim" class="control-label"></label>
+                <input asp-for="Trim" class="form-control" />
+                <span asp-validation-for="Trim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trim2" class="control-label"></label>
+                <input asp-for="Trim2" class="form-control" />
+                <span asp-validation-for="Trim2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Turbo" class="control-label"></label>
+                <input asp-for="Turbo" class="form-control" />
+                <span asp-validation-for="Turbo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VIN" class="control-label"></label>
+                <input asp-for="VIN" class="form-control" />
+                <span asp-validation-for="VIN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValveTrainDesign" class="control-label"></label>
+                <input asp-for="ValveTrainDesign" class="form-control" />
+                <span asp-validation-for="ValveTrainDesign" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VehicleType" class="control-label"></label>
+                <input asp-for="VehicleType" class="form-control" />
+                <span asp-validation-for="VehicleType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WheelBaseLong" class="control-label"></label>
+                <input asp-for="WheelBaseLong" class="form-control" />
+                <span asp-validation-for="WheelBaseLong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WheelBaseShort" class="control-label"></label>
+                <input asp-for="WheelBaseShort" class="form-control" />
+                <span asp-validation-for="WheelBaseShort" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WheelBaseType" class="control-label"></label>
+                <input asp-for="WheelBaseType" class="form-control" />
+                <span asp-validation-for="WheelBaseType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WheelSizeFront" class="control-label"></label>
+                <input asp-for="WheelSizeFront" class="form-control" />
+                <span asp-validation-for="WheelSizeFront" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WheelSizeRear" class="control-label"></label>
+                <input asp-for="WheelSizeRear" class="form-control" />
+                <span asp-validation-for="WheelSizeRear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wheels" class="control-label"></label>
+                <input asp-for="Wheels" class="form-control" />
+                <span asp-validation-for="Wheels" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Windows" class="control-label"></label>
+                <input asp-for="Windows" class="form-control" />
+                <span asp-validation-for="Windows" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save Vehicle" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.VehicleId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
