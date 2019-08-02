@@ -74,10 +74,12 @@ namespace LugNutzEnterprize.Controllers
         public async Task<IActionResult> ApiGet(Vehicle vehicle)
         {
             string url = $"https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/{vehicle.VIN}?format=json";
-            
-           
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(url);
+
+
+            HttpClient client = new HttpClient
+            {
+                BaseAddress = new Uri(url)
+            };
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             try
             {

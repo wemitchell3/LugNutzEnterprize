@@ -7,6 +7,11 @@ namespace LugNutzEnterprize.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public ApplicationUser()
+        {
+
+        }
+
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -34,7 +39,7 @@ namespace LugNutzEnterprize.Models
         public bool IsAdmin { get; set; }
 
         [NotMapped]
-        [Display(Name = "Seller")]
+        [Display(Name = "Full Name")]
         public string FullName
         {
             get
