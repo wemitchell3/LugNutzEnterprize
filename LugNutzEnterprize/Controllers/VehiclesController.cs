@@ -70,7 +70,7 @@ namespace LugNutzEnterprize.Controllers
             return View();
         }
 
-        // GET: Vehicles/CreateManually
+        // GET: Vehicles/CreateAutomaticallyVin
         public async Task<IActionResult> ApiGet(Vehicle vehicle)
         {
             string url = $"https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/{vehicle.VIN}?format=json";
