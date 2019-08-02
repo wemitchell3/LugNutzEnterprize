@@ -6,5 +6,6 @@ public class Rootobject
     public string Message { get; set; }
     public string SearchCriteria { get; set; }
     public Vehicle[] Results { get; set; }
+
 }
 

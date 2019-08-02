@@ -75,18 +75,24 @@ namespace LugNutzEnterprize.Controllers
         {
             string url = $"https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/{vehicle.VIN}?format=json";
             
+           
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(url);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             try
             {
-                var response = client.GetAsync(url).Result;
+                var response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
-                   var v = await response.Content.ReadAsStringAsync();
-            return View(v);
+                   var v = await response.Content.ReadAsAsync<Rootobject>();
+                   foreach (var mileage in v.Results)
+                    {
+                        mileage.VehicleMileage = vehicle.VehicleMileage;
+
+                    }
+                    return View(v.Results[0]);
                 }
-                return View();
+            return View();
             }
             catch 
             {
@@ -111,7 +117,7 @@ namespace LugNutzEnterprize.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(vehicle);
+            return RedirectToAction(nameof(CreateAutomaticallyVin));
         }
 
         // GET: Vehicles/Edit/5
