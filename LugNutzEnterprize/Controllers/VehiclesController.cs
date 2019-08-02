@@ -4,7 +4,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace LugNutzEnterprize.Controllers
@@ -66,6 +69,31 @@ namespace LugNutzEnterprize.Controllers
         {
             return View();
         }
+
+        // GET: Vehicles/CreateManually
+        public async Task<IActionResult> ApiGet(Vehicle vehicle)
+        {
+            string url = $"https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/{vehicle.VIN}?format=json";
+            
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(url);
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            try
+            {
+                var response = client.GetAsync(url).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                   var v = await response.Content.ReadAsStringAsync();
+            return View(v);
+                }
+                return View();
+            }
+            catch 
+            {
+                return NotFound();
+            }
+        }
+
 
         // POST: Vehicles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for

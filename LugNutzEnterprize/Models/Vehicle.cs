@@ -162,6 +162,11 @@ namespace LugNutzEnterprize.Models
         public string WheelSizeRear { get; set; }
         public string Wheels { get; set; }
         public string Windows { get; set; }
+
+        public static implicit operator Vehicle(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
