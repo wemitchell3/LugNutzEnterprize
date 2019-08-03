@@ -150,10 +150,13 @@ namespace LugNutzEnterprize.Controllers
                 return NotFound();
             }
 
+            var currentUser = await GetCurrentUserAsync();
+            ModelState.Remove("UserId");
             if (ModelState.IsValid)
             {
                 try
                 {
+                    vehicle.UserId = currentUser.Id;
                     _context.Update(vehicle);
                     await _context.SaveChangesAsync();
                 }
