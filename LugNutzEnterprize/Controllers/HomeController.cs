@@ -37,7 +37,7 @@ namespace LugNutzEnterprize.Controllers
                 byte[] imageData = null;
                 FileInfo fileInfo = new FileInfo(fileName);
                 long imageFileLength = fileInfo.Length;
-                FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read)
+                    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                 BinaryReader br = new BinaryReader(fs);
                 imageData = br.ReadBytes((int)imageFileLength);
 
@@ -46,7 +46,7 @@ namespace LugNutzEnterprize.Controllers
             var bdUsers = HttpContext.GetOwinContext().Get<ApplicationDbContect>();
             var userImage = bdUsers.Users.Where(x => x.Id == userId).FirstOrDefault();
 
-            return new FileContentResult(userImage.UserPhoto, "image/jpeg");
+            return new FileContentResult(userImage.ProfilePicture, "image/jpeg");
             }
             else
             {
@@ -55,7 +55,7 @@ namespace LugNutzEnterprize.Controllers
                 byte[] imageData = null;
                 FileInfo fileInfo = new FileInfo(fileName);
                 long imageFileLength = fileInfo.Length;
-                FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read)
+                FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                 BinaryReader br = new BinaryReader(fs);
                 imageData = br.ReadBytes((int)imageFileLength);
 

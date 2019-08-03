@@ -65,7 +65,7 @@ namespace LugNutzEnterprize.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             [Display(Name = "Profile Picture")]
-            public byte[] UserPhoto { get; set; }
+            public byte[] ProfilePicture { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -78,6 +78,21 @@ namespace LugNutzEnterprize.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
+                byte[] imageData = null;
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase poImgFile = Request.Files["ProfilePicture"];
+
+                    using (var binary = new BinaryReader(poImgFile.InputStream))
+                    {
+                        imageData = binary.ReadBytes(poImgFile.ContentLength);
+                    }
+                }
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+                //Here we pass the byte array to user context to store in db
+                user.ProfilePicture = imageData;
+
                 var user = new ApplicationUser {
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
