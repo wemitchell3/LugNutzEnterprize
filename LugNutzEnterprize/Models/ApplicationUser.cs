@@ -7,6 +7,7 @@ namespace LugNutzEnterprize.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public byte[] UserPhoto { get; set; }
         public ApplicationUser()
         {
 

@@ -63,6 +63,9 @@ namespace LugNutzEnterprize.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Display(Name = "Profile Picture")]
+            public byte[] UserPhoto { get; set; }
         }
 
         public void OnGet(string returnUrl = null)

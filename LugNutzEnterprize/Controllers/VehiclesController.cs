@@ -75,7 +75,6 @@ namespace LugNutzEnterprize.Controllers
         {
             string url = $"https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/{vehicle.VIN}?format=json";
 
-
             HttpClient client = new HttpClient
             {
                 BaseAddress = new Uri(url)
@@ -86,17 +85,17 @@ namespace LugNutzEnterprize.Controllers
                 var response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
-                   var v = await response.Content.ReadAsAsync<Rootobject>();
-                   foreach (var mileage in v.Results)
+                    var v = await response.Content.ReadAsAsync<Rootobject>();
+                    foreach (var mileage in v.Results)
                     {
                         mileage.VehicleMileage = vehicle.VehicleMileage;
 
                     }
                     return View(v.Results[0]);
                 }
-            return View();
+                return View();
             }
-            catch 
+            catch
             {
                 return NotFound();
             }
