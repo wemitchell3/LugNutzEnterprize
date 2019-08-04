@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LugNutzEnterprize.Models
 {
     public class Vehicle
     {
+        public List<MaintenanceTask> MaintenanceTasks { get; set; }
+
+        public ApplicationUser User { get; set; }
+
         [Key]
         public int VehicleId { get; set; }
+
         [Required]
         public string UserId { get; set; }
-        
-        public ApplicationUser User { get; set; }
+
         [Required]
         public int VehicleMileage { get; set; }
+
         public string ABS { get; set; }
         public string ActiveSafetySysNote { get; set; }
         public string AdaptiveCruiseControl { get; set; }
@@ -162,11 +165,6 @@ namespace LugNutzEnterprize.Models
         public string WheelSizeRear { get; set; }
         public string Wheels { get; set; }
         public string Windows { get; set; }
-
-        public static implicit operator Vehicle(string v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
 

@@ -29,7 +29,7 @@ namespace LugNutzEnterprize.Controllers
         // GET: Vehicles
         public async Task<IActionResult> Index()
         {
-            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            var currentUser = await GetCurrentUserAsync();
             var applicationDbContext = _context.Vehicle.Include(v => v.User).Where(v => v.UserId == currentUser.Id);
             return View(await applicationDbContext.ToListAsync());
         }

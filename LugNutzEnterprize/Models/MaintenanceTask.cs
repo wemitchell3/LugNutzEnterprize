@@ -1,16 +1,20 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace LugNutzEnterprize.Models
 {
     public class MaintenanceTask
     {
+
         [Key]
         public int MaintenanceTaskId { get; set; }
 
         [Required]
-        public int VehicleId { get; set; }        
+        public int VehicleId { get; set; }
 
         [Required]
         public string MaintenanceTaskTitle { get; set; }
@@ -34,6 +38,6 @@ namespace LugNutzEnterprize.Models
         [DataType(DataType.Date)]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Display(Name = "Date Created")]
-        public DateTime TargetCompleteDate { get; set; }        
+        public DateTime TargetCompleteDate { get; set; }       
     }
 }
