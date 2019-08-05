@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +17,10 @@ namespace LugNutzEnterprize.Models
         public ApplicationUser User { get; set; }
         [Required]
         public int VehicleMileage { get; set; }
+        [Display(Name = "Image Path")]
+        public string ImagePath { get; set; }
+        [NotMapped]
+        public IFormFile Photo { get; set; }
         public string ABS { get; set; }
         public string ActiveSafetySysNote { get; set; }
         public string AdaptiveCruiseControl { get; set; }
