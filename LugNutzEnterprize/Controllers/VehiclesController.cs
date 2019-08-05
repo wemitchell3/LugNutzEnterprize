@@ -31,7 +31,7 @@ namespace LugNutzEnterprize.Controllers
         {
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
             var applicationDbContext = _context.Vehicle.Include(v => v.User).Where(v => v.UserId == currentUser.Id);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await applicationDbContext.ToListAsync());         
         }
 
         // GET: Vehicles/Details/5
@@ -86,17 +86,17 @@ namespace LugNutzEnterprize.Controllers
                 var response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
-                   var v = await response.Content.ReadAsAsync<Rootobject>();
-                   foreach (var mileage in v.Results)
+                    var v = await response.Content.ReadAsAsync<Rootobject>();
+                    foreach (var mileage in v.Results)
                     {
                         mileage.VehicleMileage = vehicle.VehicleMileage;
 
                     }
                     return View(v.Results[0]);
                 }
-            return View();
+                return View();
             }
-            catch 
+            catch
             {
                 return NotFound();
             }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LugNutzEnterprize.Models
 {
-    public class MaintenanceTask
+    public class MaintenanceTask : Attribute   
     {
         [Key]
         public int MaintenanceTaskId { get; set; }
@@ -22,18 +22,28 @@ namespace LugNutzEnterprize.Models
         public int TaskDueAtMileage { get; set; }
 
         [Required]
-        public bool IsComplete { get; set; }
+        public bool IsComplete { get; set; }        
 
         [Required]
-        [DataType(DataType.Date)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [Display(Name = "Date Created")]
-        public DateTime DateCreated { get; set; }
+        [DataType(DataType.Date)]        
+        [Display(Name = "Target Complete Date")]
+        public DateTime TargetCompleteDate { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[Required]
+        //[DataType(DataType.Date)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+
+        [Timestamp]
         [Display(Name = "Date Created")]
-        public DateTime TargetCompleteDate { get; set; }        
+        public byte[] CreatedDate { get; set; }
+
+        //public DateTime CreatedDate { get; set; }
+        //public DateTime ModifiedDate { get; set; }
+
+        //public MaintenanceTask()
+        //{
+        //    this.CreatedDate = DateTime.UtcNow;
+        //    //this.ModifiedDate = DateTime.UtcNow;
+        //}
     }
 }

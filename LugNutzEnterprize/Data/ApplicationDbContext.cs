@@ -61,6 +61,17 @@ namespace LugNutzEnterprize.Data
             var passwordHashBilly = new PasswordHasher<ApplicationUser>();
             user5.PasswordHash = passwordHashBilly.HashPassword(user, "Billy8*");
             modelBuilder.Entity<ApplicationUser>().HasData(user5);
+
+            modelBuilder.Entity<Vehicle>().HasData(
+               new Vehicle()
+               {
+                   VehicleId = 1,
+                   UserId = user.Id,
+                   ModelYear = "2019",
+                   Make = "Cadillac",
+                   Model = "XT4"
+               }
+           );
         }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LugNutzEnterprize.Migrations
 {
-    public partial class initialcreate : Migration
+    public partial class TimeStamp : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,13 +61,17 @@ namespace LugNutzEnterprize.Migrations
                 {
                     MaintenanceTaskId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreatedDated = table.Column<DateTime>(nullable: true),
+                    UserCreated = table.Column<string>(nullable: true),
+                    ModeifiedDate = table.Column<DateTime>(nullable: true),
+                    UserModified = table.Column<string>(nullable: true),
                     VehicleId = table.Column<int>(nullable: false),
                     MaintenanceTaskTitle = table.Column<string>(nullable: false),
                     MaintenanceTaskDescription = table.Column<string>(nullable: false),
                     TaskDueAtMileage = table.Column<int>(nullable: false),
                     IsComplete = table.Column<bool>(nullable: false),
-                    DateCreated = table.Column<DateTime>(nullable: false),
-                    TargetCompleteDate = table.Column<DateTime>(nullable: false)
+                    TargetCompleteDate = table.Column<DateTime>(nullable: false),
+                    CreatedDate = table.Column<byte[]>(rowVersion: true, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -392,12 +396,17 @@ namespace LugNutzEnterprize.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsAdmin", "IsMasterMechanic", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "StreetAddress", "TwoFactorEnabled", "UserName", "Zip" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, null, "6b62dd71-1bb3-4bcc-bb2d-ce466f29eb65", "admin@admin.com", true, "Admina", false, false, "Straytor", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEEqEZ6eNA9btWiGTEbGOo7aOYdHVsr8fEp1QYXKTK6P7OpTcVSPMr31GvPgIw7fixw==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", null, "123 Infinity Way", false, "admin@admin.com", 0 });
+                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, null, "9e39fa48-3f2b-412a-af07-48f87b7c3b54", "admin@admin.com", true, "Admina", false, false, "Straytor", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAECOVIzgqi567oDf3QiSNCyLXvCvSrcGNXBLjbBxGOQ+ceE6meFuhj/THR7dwPqYVrg==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", null, "123 Infinity Way", false, "admin@admin.com", 0 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsAdmin", "IsMasterMechanic", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "StreetAddress", "TwoFactorEnabled", "UserName", "Zip" },
-                values: new object[] { "45670330-ffff-ffff-ffff-ffffffffffff", 0, null, "e0d13f81-58bf-4cb5-94da-da29a9d4c5d6", "billy@billy.com", true, "Billy", false, false, "M", false, null, "BILLY@BILLY.COM", "BILLY@BILLY.COM", "AQAAAAEAACcQAAAAEPRvWfkjGfDAac6s1sctTKktK/MEbPpUejdVzuX+OcUcmgFSfzj2ewdnDHEm6CwfNw==", null, false, "7f004300-a4d9-48e9-9ebb-8803db794577", null, "33 Lover's Lane", false, "billy@billy.com", 0 });
+                values: new object[] { "45670330-ffff-ffff-ffff-ffffffffffff", 0, null, "1a678580-4c9a-4b24-b1d6-d359504a7203", "billy@billy.com", true, "Billy", false, false, "M", false, null, "BILLY@BILLY.COM", "BILLY@BILLY.COM", "AQAAAAEAACcQAAAAEBIJw99u9I8ImDTiean8p84fpr8cdFP6U5krCyrZzVbYwTGiAmlDwNjFU2QS7ukEng==", null, false, "7f004300-a4d9-48e9-9ebb-8803db794577", null, "33 Lover's Lane", false, "billy@billy.com", 0 });
+
+            migrationBuilder.InsertData(
+                table: "Vehicle",
+                columns: new[] { "VehicleId", "ABS", "ActiveSafetySysNote", "AdaptiveCruiseControl", "AdaptiveDrivingBeam", "AdaptiveHeadlights", "AdditionalErrorText", "AirBagLocCurtain", "AirBagLocFront", "AirBagLocKnee", "AirBagLocSeatCushion", "AirBagLocSide", "AutoReverseSystem", "AutomaticPedestrianAlertingSound", "AxleConfiguration", "Axles", "BasePrice", "BatteryA", "BatteryA_to", "BatteryCells", "BatteryInfo", "BatteryKWh", "BatteryKWh_to", "BatteryModules", "BatteryPacks", "BatteryType", "BatteryV", "BatteryV_to", "BedLengthIN", "BedType", "BlindSpotMon", "BodyCabType", "BodyClass", "BrakeSystemDesc", "BrakeSystemType", "BusFloorConfigType", "BusLength", "BusType", "CAN_AACN", "CIB", "CashForClunkers", "ChargerLevel", "ChargerPowerKW", "CoolingType", "CurbWeightLB", "CustomMotorcycleType", "DaytimeRunningLight", "DestinationMarket", "DisplacementCC", "DisplacementCI", "DisplacementL", "Doors", "DriveType", "DriverAssist", "DynamicBrakeSupport", "EDR", "ESC", "EVDriveUnit", "ElectrificationLevel", "EngineConfiguration", "EngineCycles", "EngineCylinders", "EngineHP", "EngineHP_to", "EngineKW", "EngineManufacturer", "EngineModel", "EntertainmentSystem", "ErrorCode", "ErrorText", "ForwardCollisionWarning", "FuelInjectionType", "FuelTypePrimary", "FuelTypeSecondary", "GCWR", "GCWR_to", "GVWR", "GVWR_to", "KeylessIgnition", "LaneDepartureWarning", "LaneKeepSystem", "LowerBeamHeadlampLightSource", "Make", "Manufacturer", "ManufacturerId", "Model", "ModelYear", "MotorcycleChassisType", "MotorcycleSuspensionType", "NCSABodyType", "NCSAMake", "NCSAMapExcApprovedBy", "NCSAMapExcApprovedOn", "NCSAMappingException", "NCSAModel", "NCSANote", "Note", "OtherBusInfo", "OtherEngineInfo", "OtherMotorcycleInfo", "OtherRestraintSystemInfo", "OtherTrailerInfo", "ParkAssist", "PedestrianAutomaticEmergencyBraking", "PlantCity", "PlantCompanyName", "PlantCountry", "PlantState", "PossibleValues", "Pretensioner", "RearCrossTrafficAlert", "RearVisibilitySystem", "SAEAutomationLevel", "SAEAutomationLevel_to", "SeatBeltsAll", "SeatRows", "Seats", "SemiautomaticHeadlampBeamSwitching", "Series", "Series2", "SteeringLocation", "SuggestedVIN", "TPMS", "TopSpeedMPH", "TrackWidth", "TractionControl", "TrailerBodyType", "TrailerLength", "TrailerType", "TransmissionSpeeds", "TransmissionStyle", "Trim", "Trim2", "Turbo", "UserId", "VIN", "ValveTrainDesign", "VehicleMileage", "VehicleType", "WheelBaseLong", "WheelBaseShort", "WheelBaseType", "WheelSizeFront", "WheelSizeRear", "Wheels", "Windows" },
+                values: new object[] { 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "Cadillac", null, null, "XT4", "2019", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "00000000-ffff-ffff-ffff-ffffffffffff", null, null, 0, null, null, null, null, null, null, null, null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
