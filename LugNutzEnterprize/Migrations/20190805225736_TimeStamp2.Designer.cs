@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LugNutzEnterprize.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190805031533_WishList2")]
-    partial class WishList2
+    [Migration("20190805225736_TimeStamp2")]
+    partial class TimeStamp2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,8 @@ namespace LugNutzEnterprize.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired();
+
+                    b.Property<string>("ImagePath");
 
                     b.Property<bool>("IsAdmin");
 
@@ -94,7 +96,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b35e20a0-6de9-4ccf-a2a1-3f7c9b75fce4",
+                            ConcurrencyStamp = "8beec900-f326-4079-859f-cf76f34e08d7",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Admina",
@@ -104,7 +106,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJIhX36D/L1GCNmq88+ZGfqtbcJcz81AtSJcIMzTC1+bfAmk2kgTacfsLKqWwC6ygg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHFnTze04wMrnXWjWgFBTT2ifviRbyeR+fNIyonOuiueLiZLYb1YxhDO+VCdzlZdNg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "123 Infinity Way",
@@ -116,7 +118,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "45670330-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0e1d195a-bc97-4826-ac54-3078257c3a90",
+                            ConcurrencyStamp = "85d665d7-58a4-4315-a538-e55190b61a29",
                             Email = "billy@billy.com",
                             EmailConfirmed = true,
                             FirstName = "Billy",
@@ -126,7 +128,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BILLY@BILLY.COM",
                             NormalizedUserName = "BILLY@BILLY.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHO+i4E3smdjmzd8yyA0RS93I1isiCbCNbblTSnFe+6Xwx2ePtXh8iLeoViBneMGfg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEBQ5MFqVuVEhXkxHY8VEuASoDoFVPsfEGt/n+fL+8VJ6KyVrz4M0oU18JaJTvH3YQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f004300-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "33 Lover's Lane",
@@ -142,9 +144,9 @@ namespace LugNutzEnterprize.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte[]>("CreatedDate")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<bool>("IsComplete");
 
@@ -349,6 +351,8 @@ namespace LugNutzEnterprize.Migrations
                     b.Property<string>("GVWR");
 
                     b.Property<string>("GVWR_to");
+
+                    b.Property<string>("ImagePath");
 
                     b.Property<string>("KeylessIgnition");
 
