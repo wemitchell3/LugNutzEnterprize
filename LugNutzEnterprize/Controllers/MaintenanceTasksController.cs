@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -52,6 +53,7 @@ namespace LugNutzEnterprize.Controllers
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
             MaintenanceTask maintenanceTask = new MaintenanceTask
             {
+                TargetCompleteDate = DateTime.Now,
                 VehicleSelectList = await _context.Vehicle.Where(v => v.UserId == currentUser.Id).Select(v => new SelectListItem
                 {
                     Text = v.FullName,
@@ -66,10 +68,10 @@ namespace LugNutzEnterprize.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateConfirmed([Bind("MaintenanceTaskId,VehicleId,MaintenanceTaskTitle,MaintenanceTaskDescription,TaskDueAtMileage,IsComplete,CreatedDate,TargetCompleteDate")] MaintenanceTask maintenanceTask)
+        public async Task<IActionResult> CreateConfirmed([Bind("MaintenanceTaskId,VehicleId,MaintenanceTaskTitle,MaintenanceTaskDescription,TaskDueAtMileage,IsComplete,TargetCompleteDate")] MaintenanceTask maintenanceTask)
         {
             if (ModelState.IsValid)
-            {
+            {                
                 _context.Add(maintenanceTask);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

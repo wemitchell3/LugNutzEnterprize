@@ -3,60 +3,54 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LugNutzEnterprize.Migrations
 {
-    public partial class WishList1 : Migration
+    public partial class TimeStamp2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "DateCreated",
-                table: "WishList");
-
-            migrationBuilder.AddColumn<byte[]>(
+            migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
-                table: "WishList",
-                rowVersion: true,
-                nullable: true);
+                table: "MaintenanceTask",
+                nullable: false,
+                defaultValueSql: "GETDATE()",
+                oldClrType: typeof(DateTime));
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "00000000-ffff-ffff-ffff-ffffffffffff",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "2101b75c-6e98-4425-b938-f415d39c0b59", "AQAAAAEAACcQAAAAEJNNAH35zQPp+nyQMQzl+fvNBqPqUEYRdcqTehr5BOiUq4od4X+f+EziAWIDBNYdCw==" });
+                values: new object[] { "8beec900-f326-4079-859f-cf76f34e08d7", "AQAAAAEAACcQAAAAEHFnTze04wMrnXWjWgFBTT2ifviRbyeR+fNIyonOuiueLiZLYb1YxhDO+VCdzlZdNg==" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "45670330-ffff-ffff-ffff-ffffffffffff",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "5e68b9ae-9c63-4ada-8712-50713e5cf4a5", "AQAAAAEAACcQAAAAEJK1Ook6owsYlLY7/Z3Vq3G7uvpD4swZsFAyGjyDHbe4+JVQbt1PMRoIIs36rDKEAA==" });
+                values: new object[] { "85d665d7-58a4-4315-a538-e55190b61a29", "AQAAAAEAACcQAAAAEEBQ5MFqVuVEhXkxHY8VEuASoDoFVPsfEGt/n+fL+8VJ6KyVrz4M0oU18JaJTvH3YQ==" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
-                table: "WishList");
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "DateCreated",
-                table: "WishList",
+                table: "MaintenanceTask",
                 nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                oldClrType: typeof(DateTime),
+                oldDefaultValueSql: "GETDATE()");
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "00000000-ffff-ffff-ffff-ffffffffffff",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "edfac1ce-3cf1-4212-b649-895846cba16c", "AQAAAAEAACcQAAAAEBbjQ4JLMrFJ0QnNuyEnXtuGlPvicJIWB0SyiZ9S+f3iJNMCewz7GcXW0mIvoZy+HA==" });
+                values: new object[] { "e0ea9d2c-3a0f-433e-9dcb-3a270aa2c001", "AQAAAAEAACcQAAAAEKFpZzOXGY0naxGe5rftAhGCvIoiEwx2s19uLiH/Qa8JexXyu7TJ6qkmeH2uwWcCxw==" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "45670330-ffff-ffff-ffff-ffffffffffff",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "036cf18c-e849-410c-a25c-11da941ec816", "AQAAAAEAACcQAAAAEBgFZQcUpWvskFYeJcrrZZogJxdKfA3bodJudiBySbTGXRAQWe6zn75SFtfMO9TnoQ==" });
+                values: new object[] { "f3b698cb-719f-4538-bcb2-c84cc7749d4f", "AQAAAAEAACcQAAAAEBt2LhL+Iwopm2arcQJaQOKB+RoxRn8pKQexoa8Cc9/dcaf8f0XF02mvgrVfM+keKw==" });
         }
     }
 }

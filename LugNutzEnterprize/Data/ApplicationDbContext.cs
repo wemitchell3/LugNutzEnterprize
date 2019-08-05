@@ -26,6 +26,10 @@ namespace LugNutzEnterprize.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<MaintenanceTask>()
+                .Property(b => b.CreatedDate)
+                .HasDefaultValueSql("GETDATE()");
+
             ApplicationUser user= new ApplicationUser
             {
                 FirstName = "Admina",

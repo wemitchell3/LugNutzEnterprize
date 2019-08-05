@@ -34,13 +34,11 @@ namespace LugNutzEnterprize.Models
         [Display(Name = "Target Complete Date")]
         public DateTime TargetCompleteDate { get; set; }
 
-        //[Required]
-        //[DataType(DataType.Date)]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-
-        [Timestamp]
+        [Required]
+        [DataType(DataType.Date)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Display(Name = "Date Created")]
-        public byte[] CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         //public DateTime CreatedDate { get; set; }
         //public DateTime ModifiedDate { get; set; }

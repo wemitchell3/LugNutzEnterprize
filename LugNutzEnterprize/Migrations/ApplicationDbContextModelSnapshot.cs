@@ -94,7 +94,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4e07583b-1459-47af-b1cd-56c82941e616",
+                            ConcurrencyStamp = "8beec900-f326-4079-859f-cf76f34e08d7",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Admina",
@@ -104,7 +104,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHAZX/GpLMBssikKMJ6veWUf3ktWwIwXlEcpbhuF14pDhnCq/XZHO21yGeU72AAZCg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHFnTze04wMrnXWjWgFBTT2ifviRbyeR+fNIyonOuiueLiZLYb1YxhDO+VCdzlZdNg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "123 Infinity Way",
@@ -116,7 +116,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "45670330-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c05fce85-a955-405f-b516-c3d035f8d900",
+                            ConcurrencyStamp = "85d665d7-58a4-4315-a538-e55190b61a29",
                             Email = "billy@billy.com",
                             EmailConfirmed = true,
                             FirstName = "Billy",
@@ -126,7 +126,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BILLY@BILLY.COM",
                             NormalizedUserName = "BILLY@BILLY.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEN0QrOiyIYRmVkL+PeTUd3/LgGkj+ZylpnTVe5oKXwwTYOLLbA/EiIwJdUOztUUwqg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEBQ5MFqVuVEhXkxHY8VEuASoDoFVPsfEGt/n+fL+8VJ6KyVrz4M0oU18JaJTvH3YQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f004300-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "33 Lover's Lane",
@@ -142,9 +142,9 @@ namespace LugNutzEnterprize.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte[]>("CreatedDate")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<bool>("IsComplete");
 
