@@ -117,24 +117,22 @@ namespace LugNutzEnterprize.Controllers
             ModelState.Remove("UserId");
             if (ModelState.IsValid)
             {
-                // If the Photo property on the incoming model object is not null, then the user
-                // has selected an image to upload.
+                string uniqueFileName = null;
+
+                // If the Photo property on the incoming model object is not null, then the user has selected an image to upload.
                 if (vehicle.Photo != null)
                 {
-                    // The image must be uploaded to the images folder in wwwroot
-                    // To get the path of the wwwroot folder we are using the inject
-                    // HostingEnvironment service provided by ASP.NET Core
+                    // The image must be uploaded to the images folder in wwwroot. To get the path of the wwwroot folder we are using the inject HostingEnvironment service provided by ASP.NET Core
                     string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                    // To make sure the file name is unique we are appending a new
-                    // GUID value and and an underscore to the file name
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + vehicle.Photo.FileName;
+                    // To make sure the file name is unique we are appending a new GUID value and and an underscore to the file name
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + vehicle.Photo.FileName;
                     string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                    // Use CopyTo() method provided by IFormFile interface to
-                    // copy the file to wwwroot/images folder
+                    // Use CopyTo() method provided by IFormFile interface to copy the file to wwwroot/images folder
                     vehicle.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
                 var currentUser = await GetCurrentUserAsync();
                 vehicle.UserId = currentUser.Id;
+                vehicle.ImagePath = uniqueFileName;
                 _context.Add(vehicle);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

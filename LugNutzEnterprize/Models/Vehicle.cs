@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LugNutzEnterprize.Models
 {
@@ -13,7 +10,7 @@ namespace LugNutzEnterprize.Models
         [Key]
         public int VehicleId { get; set; }
         [Required]
-        public string UserId { get; set; }        
+        public string UserId { get; set; }
         public ApplicationUser User { get; set; }
         [Required]
         public int VehicleMileage { get; set; }
