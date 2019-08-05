@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,7 +24,10 @@ namespace LugNutzEnterprize.Models
         public int TaskDueAtMileage { get; set; }
 
         [Required]
-        public bool IsComplete { get; set; }        
+        public bool IsComplete { get; set; }
+        
+        [NotMapped]
+        public List<SelectListItem> VehicleSelectList { get; set; }
 
         [Required]
         [DataType(DataType.Date)]        

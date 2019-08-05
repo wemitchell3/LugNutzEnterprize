@@ -14,10 +14,21 @@ namespace LugNutzEnterprize.Models
         public ApplicationUser User { get; set; }
         [Required]
         public int VehicleMileage { get; set; }
+
         [Display(Name = "Image Path")]
         public string ImagePath { get; set; }
         [NotMapped]
         public IFormFile Photo { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Vehicle Name")]
+        public string FullName
+        {
+            get
+            {
+                return ModelYear + " " + Make + " " + Model;
+            }
+        }
         public string ABS { get; set; }
         public string ActiveSafetySysNote { get; set; }
         public string AdaptiveCruiseControl { get; set; }
