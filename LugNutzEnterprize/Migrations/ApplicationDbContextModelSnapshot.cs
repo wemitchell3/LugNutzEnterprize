@@ -92,7 +92,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f3f831ae-b7a7-4080-b618-44e6e54747c4",
+                            ConcurrencyStamp = "9e39fa48-3f2b-412a-af07-48f87b7c3b54",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Admina",
@@ -102,7 +102,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGAOpju9TnyXzDJ/Duql6oYtdOvGuKpDAbryQ8ql6k7gt02uveSleBYT9FkFZFiiJQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECOVIzgqi567oDf3QiSNCyLXvCvSrcGNXBLjbBxGOQ+ceE6meFuhj/THR7dwPqYVrg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "123 Infinity Way",
@@ -114,7 +114,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "45670330-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "55c98ee7-9ccc-492b-966c-90e674c1d5eb",
+                            ConcurrencyStamp = "1a678580-4c9a-4b24-b1d6-d359504a7203",
                             Email = "billy@billy.com",
                             EmailConfirmed = true,
                             FirstName = "Billy",
@@ -124,7 +124,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BILLY@BILLY.COM",
                             NormalizedUserName = "BILLY@BILLY.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ9EJibSNsuCFNxA6mfFiDXZxChY3s1OlMdFFKYiLSck3EMTIP4XsdFvqddC1Lsv5Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBIJw99u9I8ImDTiean8p84fpr8cdFP6U5krCyrZzVbYwTGiAmlDwNjFU2QS7ukEng==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f004300-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "33 Lover's Lane",
@@ -140,8 +140,11 @@ namespace LugNutzEnterprize.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<byte[]>("CreatedDate")
+                        .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<DateTime?>("CreatedDated");
 
                     b.Property<bool>("IsComplete");
 
@@ -151,10 +154,15 @@ namespace LugNutzEnterprize.Migrations
                     b.Property<string>("MaintenanceTaskTitle")
                         .IsRequired();
 
-                    b.Property<DateTime>("TargetCompleteDate")
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<DateTime?>("ModeifiedDate");
+
+                    b.Property<DateTime>("TargetCompleteDate");
 
                     b.Property<int>("TaskDueAtMileage");
+
+                    b.Property<string>("UserCreated");
+
+                    b.Property<string>("UserModified");
 
                     b.Property<int>("VehicleId");
 
@@ -493,6 +501,17 @@ namespace LugNutzEnterprize.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Vehicle");
+
+                    b.HasData(
+                        new
+                        {
+                            VehicleId = 1,
+                            Make = "Cadillac",
+                            Model = "XT4",
+                            ModelYear = "2019",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            VehicleMileage = 0
+                        });
                 });
 
             modelBuilder.Entity("LugNutzEnterprize.Models.WishList", b =>

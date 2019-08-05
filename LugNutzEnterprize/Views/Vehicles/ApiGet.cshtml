@@ -13,6 +13,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <input type="submit" value="Save Vehicle" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Cancel</a>
             </div>
             <div class="form-group">
                 <label asp-for="ModelYear" class="control-label"></label>
@@ -30,15 +31,11 @@
                 <span asp-validation-for="Make" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Model" class="control-label"></label>
-                <input asp-for="Model" class="form-control" />
-                <span asp-validation-for="Model" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="VehicleMileage" class="control-label"></label>
                 <input asp-for="VehicleMileage" class="form-control" />
                 <span asp-validation-for="VehicleMileage" class="text-danger"></span>
             </div>
+            <h3>Specifications</h3>
             <hr />
             <div class="form-group">
                 <label asp-for="ABS" class="control-label"></label>
@@ -742,12 +739,9 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Save Vehicle" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Cancel</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 

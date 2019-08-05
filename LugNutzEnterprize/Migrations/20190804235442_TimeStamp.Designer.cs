@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LugNutzEnterprize.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190801195912_initialcreate")]
-    partial class initialcreate
+    [Migration("20190804235442_TimeStamp")]
+    partial class TimeStamp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,7 +94,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6b62dd71-1bb3-4bcc-bb2d-ce466f29eb65",
+                            ConcurrencyStamp = "9e39fa48-3f2b-412a-af07-48f87b7c3b54",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Admina",
@@ -104,7 +104,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEqEZ6eNA9btWiGTEbGOo7aOYdHVsr8fEp1QYXKTK6P7OpTcVSPMr31GvPgIw7fixw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECOVIzgqi567oDf3QiSNCyLXvCvSrcGNXBLjbBxGOQ+ceE6meFuhj/THR7dwPqYVrg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "123 Infinity Way",
@@ -116,7 +116,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "45670330-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e0d13f81-58bf-4cb5-94da-da29a9d4c5d6",
+                            ConcurrencyStamp = "1a678580-4c9a-4b24-b1d6-d359504a7203",
                             Email = "billy@billy.com",
                             EmailConfirmed = true,
                             FirstName = "Billy",
@@ -126,7 +126,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BILLY@BILLY.COM",
                             NormalizedUserName = "BILLY@BILLY.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPRvWfkjGfDAac6s1sctTKktK/MEbPpUejdVzuX+OcUcmgFSfzj2ewdnDHEm6CwfNw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBIJw99u9I8ImDTiean8p84fpr8cdFP6U5krCyrZzVbYwTGiAmlDwNjFU2QS7ukEng==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f004300-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "33 Lover's Lane",
@@ -142,8 +142,11 @@ namespace LugNutzEnterprize.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<byte[]>("CreatedDate")
+                        .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<DateTime?>("CreatedDated");
 
                     b.Property<bool>("IsComplete");
 
@@ -153,10 +156,15 @@ namespace LugNutzEnterprize.Migrations
                     b.Property<string>("MaintenanceTaskTitle")
                         .IsRequired();
 
-                    b.Property<DateTime>("TargetCompleteDate")
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<DateTime?>("ModeifiedDate");
+
+                    b.Property<DateTime>("TargetCompleteDate");
 
                     b.Property<int>("TaskDueAtMileage");
+
+                    b.Property<string>("UserCreated");
+
+                    b.Property<string>("UserModified");
 
                     b.Property<int>("VehicleId");
 
@@ -495,6 +503,17 @@ namespace LugNutzEnterprize.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Vehicle");
+
+                    b.HasData(
+                        new
+                        {
+                            VehicleId = 1,
+                            Make = "Cadillac",
+                            Model = "XT4",
+                            ModelYear = "2019",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            VehicleMileage = 0
+                        });
                 });
 
             modelBuilder.Entity("LugNutzEnterprize.Models.WishList", b =>
