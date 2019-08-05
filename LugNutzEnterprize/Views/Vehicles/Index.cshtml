@@ -38,11 +38,10 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <a asp-controller="Vehciles" asp-route-id="@item.VehicleId"> </a>
             var imagePath = "~/images/" + (item.ImagePath ?? "noimage.jpg");
             <tr>
                 <td>
-                    <img class="" src="@imagePath" asp-append-version="true" />
+                    <img class="card-img-top imageThumbnail" src="@imagePath" asp-append-version="true" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ModelYear)
