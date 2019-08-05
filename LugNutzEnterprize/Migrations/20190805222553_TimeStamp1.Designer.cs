@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LugNutzEnterprize.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190805031533_WishList2")]
-    partial class WishList2
+    [Migration("20190805222553_TimeStamp1")]
+    partial class TimeStamp1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,7 +94,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b35e20a0-6de9-4ccf-a2a1-3f7c9b75fce4",
+                            ConcurrencyStamp = "d48193af-31fc-4a26-b040-3ae0adbfb609",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Admina",
@@ -104,7 +104,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJIhX36D/L1GCNmq88+ZGfqtbcJcz81AtSJcIMzTC1+bfAmk2kgTacfsLKqWwC6ygg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELZjkur2vvmdc6Lg7CRBOChBBG0xFe1Y5k37Gf5Dl4146J5fZpLkZubxg5zceAsxqw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "123 Infinity Way",
@@ -116,7 +116,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "45670330-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0e1d195a-bc97-4826-ac54-3078257c3a90",
+                            ConcurrencyStamp = "55ed0344-a69d-4b13-a5a2-eff7a5142cf8",
                             Email = "billy@billy.com",
                             EmailConfirmed = true,
                             FirstName = "Billy",
@@ -126,7 +126,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BILLY@BILLY.COM",
                             NormalizedUserName = "BILLY@BILLY.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHO+i4E3smdjmzd8yyA0RS93I1isiCbCNbblTSnFe+6Xwx2ePtXh8iLeoViBneMGfg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPbF8BtbvuICD5/Iw9FZkDXf1ucLG0PaPJ/DlY9JRlRFZxshcoKKfowk0XRtlrgPkw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f004300-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "33 Lover's Lane",
@@ -142,9 +142,7 @@ namespace LugNutzEnterprize.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte[]>("CreatedDate")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool>("IsComplete");
 
@@ -349,6 +347,8 @@ namespace LugNutzEnterprize.Migrations
                     b.Property<string>("GVWR");
 
                     b.Property<string>("GVWR_to");
+
+                    b.Property<string>("ImagePath");
 
                     b.Property<string>("KeylessIgnition");
 

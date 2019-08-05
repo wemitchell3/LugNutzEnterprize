@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LugNutzEnterprize.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190805014502_TimeStamp2")]
+    [Migration("20190805222905_TimeStamp2")]
     partial class TimeStamp2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,7 +94,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "edfac1ce-3cf1-4212-b649-895846cba16c",
+                            ConcurrencyStamp = "327b1101-7219-4207-b922-565c9e857077",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Admina",
@@ -104,7 +104,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBbjQ4JLMrFJ0QnNuyEnXtuGlPvicJIWB0SyiZ9S+f3iJNMCewz7GcXW0mIvoZy+HA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBNe/sAOv7e2HRUf6lbHavqi8JMI0CgrK8jH1J8atqAM6tdl76rTLPoTSKOkbgzCZw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "123 Infinity Way",
@@ -116,7 +116,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "45670330-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "036cf18c-e849-410c-a25c-11da941ec816",
+                            ConcurrencyStamp = "dbe66281-bd7a-4289-b1d9-2232217084e6",
                             Email = "billy@billy.com",
                             EmailConfirmed = true,
                             FirstName = "Billy",
@@ -126,7 +126,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BILLY@BILLY.COM",
                             NormalizedUserName = "BILLY@BILLY.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBgFZQcUpWvskFYeJcrrZZogJxdKfA3bodJudiBySbTGXRAQWe6zn75SFtfMO9TnoQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPkya3Wxg58rBRQW4qaL1ZQM1tka03fDe0xwyUeIPEB1ToRyOCpcX2JALSNN1yQXKA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f004300-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "33 Lover's Lane",
@@ -142,8 +142,7 @@ namespace LugNutzEnterprize.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte[]>("CreatedDate")
-                        .IsConcurrencyToken()
+                    b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<bool>("IsComplete");
@@ -350,6 +349,8 @@ namespace LugNutzEnterprize.Migrations
 
                     b.Property<string>("GVWR_to");
 
+                    b.Property<string>("ImagePath");
+
                     b.Property<string>("KeylessIgnition");
 
                     b.Property<string>("LaneDepartureWarning");
@@ -514,13 +515,11 @@ namespace LugNutzEnterprize.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<byte[]>("CreatedDate")
+                        .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<bool>("IsComplete");
-
-                    b.Property<string>("UserId")
-                        .IsRequired();
 
                     b.Property<int>("VehicleId");
 
@@ -531,8 +530,6 @@ namespace LugNutzEnterprize.Migrations
                         .IsRequired();
 
                     b.HasKey("WishListId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("WishList");
                 });
@@ -663,14 +660,6 @@ namespace LugNutzEnterprize.Migrations
                 {
                     b.HasOne("LugNutzEnterprize.Models.ApplicationUser", "User")
                         .WithMany("Vehicles")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("LugNutzEnterprize.Models.WishList", b =>
-                {
-                    b.HasOne("LugNutzEnterprize.Models.ApplicationUser", "User")
-                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

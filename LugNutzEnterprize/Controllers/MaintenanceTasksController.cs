@@ -3,6 +3,7 @@ using LugNutzEnterprize.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -57,6 +58,7 @@ namespace LugNutzEnterprize.Controllers
         {
             if (ModelState.IsValid)
             {
+                maintenanceTask.CreatedDate = DateTime.Now;
                 _context.Add(maintenanceTask);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
