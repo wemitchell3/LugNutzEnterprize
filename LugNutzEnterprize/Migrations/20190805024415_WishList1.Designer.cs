@@ -4,14 +4,16 @@ using LugNutzEnterprize.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LugNutzEnterprize.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190805024415_WishList1")]
+    partial class WishList1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,7 +94,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b35e20a0-6de9-4ccf-a2a1-3f7c9b75fce4",
+                            ConcurrencyStamp = "2101b75c-6e98-4425-b938-f415d39c0b59",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Admina",
@@ -102,7 +104,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJIhX36D/L1GCNmq88+ZGfqtbcJcz81AtSJcIMzTC1+bfAmk2kgTacfsLKqWwC6ygg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJNNAH35zQPp+nyQMQzl+fvNBqPqUEYRdcqTehr5BOiUq4od4X+f+EziAWIDBNYdCw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "123 Infinity Way",
@@ -114,7 +116,7 @@ namespace LugNutzEnterprize.Migrations
                         {
                             Id = "45670330-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0e1d195a-bc97-4826-ac54-3078257c3a90",
+                            ConcurrencyStamp = "5e68b9ae-9c63-4ada-8712-50713e5cf4a5",
                             Email = "billy@billy.com",
                             EmailConfirmed = true,
                             FirstName = "Billy",
@@ -124,7 +126,7 @@ namespace LugNutzEnterprize.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BILLY@BILLY.COM",
                             NormalizedUserName = "BILLY@BILLY.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHO+i4E3smdjmzd8yyA0RS93I1isiCbCNbblTSnFe+6Xwx2ePtXh8iLeoViBneMGfg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJK1Ook6owsYlLY7/Z3Vq3G7uvpD4swZsFAyGjyDHbe4+JVQbt1PMRoIIs36rDKEAA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f004300-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "33 Lover's Lane",
@@ -518,6 +520,9 @@ namespace LugNutzEnterprize.Migrations
 
                     b.Property<bool>("IsComplete");
 
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
                     b.Property<int>("VehicleId");
 
                     b.Property<string>("WishListDescription")
@@ -527,6 +532,8 @@ namespace LugNutzEnterprize.Migrations
                         .IsRequired();
 
                     b.HasKey("WishListId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("WishList");
                 });
@@ -657,6 +664,14 @@ namespace LugNutzEnterprize.Migrations
                 {
                     b.HasOne("LugNutzEnterprize.Models.ApplicationUser", "User")
                         .WithMany("Vehicles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("LugNutzEnterprize.Models.WishList", b =>
+                {
+                    b.HasOne("LugNutzEnterprize.Models.ApplicationUser", "User")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
