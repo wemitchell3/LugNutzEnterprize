@@ -18,6 +18,9 @@
     <thead>
         <tr>
             <th>
+                Image
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.ModelYear)
             </th>
             <th>
@@ -28,31 +31,37 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.VehicleMileage)
-            </th>            
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>            
-            <td>
-                @Html.DisplayFor(modelItem => item.ModelYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Make)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VehicleMileage)
-            </td>                        
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.VehicleId" class="btn btn-outline-primary">Edit</a> 
-                <a asp-action="Details" asp-route-id="@item.VehicleId" class="btn btn-outline-primary">Details</a> 
-                <a asp-action="Delete" asp-route-id="@item.VehicleId" class="btn btn-outline-primary">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <a asp-controller="Vehciles" asp-route-id="@item.VehicleId"> </a>
+            var imagePath = "~/images/" + (item.ImagePath ?? "noimage.jpg");
+            <tr>
+                <td>
+                    <img class="" src="@imagePath" asp-append-version="true" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModelYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleMileage)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VehicleId" class="btn btn-outline-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.VehicleId" class="btn btn-outline-primary">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.VehicleId" class="btn btn-outline-primary">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
