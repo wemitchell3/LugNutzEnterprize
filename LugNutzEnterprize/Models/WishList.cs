@@ -13,9 +13,6 @@ namespace LugNutzEnterprize.Models
         public int VehicleId { get; set; }
 
         [Required]
-        public ApplicationUser User { get; set; }
-
-        [Required]
         public string WishListTitle { get; set; }
 
         [Required]
@@ -24,10 +21,14 @@ namespace LugNutzEnterprize.Models
         [Required]
         public bool IsComplete { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [Timestamp]
         [Display(Name = "Date Created")]
-        public DateTime DateCreated { get; set; }
+        public byte[] CreatedDate { get; set; }
+
+        //[Required]
+        //[DataType(DataType.Date)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[Display(Name = "Date Created")]
+        //public DateTime DateCreated { get; set; }
     }
 }

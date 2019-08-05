@@ -9,22 +9,22 @@ using System.Threading.Tasks;
 namespace LugNutzEnterprize.Controllers
 {
     [Authorize]
-    public class MaintenanceTasksController : Controller
+    public class WishListsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public MaintenanceTasksController(ApplicationDbContext context)
+        public WishListsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: MaintenanceTasks
+        // GET: WishLists
         public async Task<IActionResult> Index()
         {
-            return View(await _context.MaintenanceTask.ToListAsync());
+            return View(await _context.WishList.ToListAsync());
         }
 
-        // GET: MaintenanceTasks/Details/5
+        // GET: WishLists/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace LugNutzEnterprize.Controllers
                 return NotFound();
             }
 
-            var maintenanceTask = await _context.MaintenanceTask
-                .FirstOrDefaultAsync(m => m.MaintenanceTaskId == id);
-            if (maintenanceTask == null)
+            var wishList = await _context.WishList
+                .FirstOrDefaultAsync(m => m.WishListId == id);
+            if (wishList == null)
             {
                 return NotFound();
             }
 
-            return View(maintenanceTask);
+            return View(wishList);
         }
 
-        // GET: MaintenanceTasks/Create
+        // GET: WishLists/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: MaintenanceTasks/Create
+        // POST: WishLists/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateConfirmed([Bind("MaintenanceTaskId,VehicleId,MaintenanceTaskTitle,MaintenanceTaskDescription,TaskDueAtMileage,IsComplete,CreatedDate,TargetCompleteDate")] MaintenanceTask maintenanceTask)
-        {
+        public async Task<IActionResult> CreateConfirmed([Bind("WishListId,VehicleId,WishListTitle,WishListDescription,IsComplete,CreatedDate")] WishList wishList)
+        {            
             if (ModelState.IsValid)
             {
-                _context.Add(maintenanceTask);
+                _context.Add(wishList);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return NotFound();
+            return View(wishList);
         }
 
-        // GET: MaintenanceTasks/Edit/5
+        // GET: WishLists/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace LugNutzEnterprize.Controllers
                 return NotFound();
             }
 
-            var maintenanceTask = await _context.MaintenanceTask.FindAsync(id);
-            if (maintenanceTask == null)
+            var wishList = await _context.WishList.FindAsync(id);
+            if (wishList == null)
             {
                 return NotFound();
             }
-            return View(maintenanceTask);
+            return View(wishList);
         }
 
-        // POST: MaintenanceTasks/Edit/5
+        // POST: WishLists/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MaintenanceTaskId,VehicleId,MaintenanceTaskTitle,MaintenanceTaskDescription,TaskDueAtMileage,IsComplete,CreatedDate,TargetCompleteDate")] MaintenanceTask maintenanceTask)
+        public async Task<IActionResult> Edit(int id, [Bind("WishListId,VehicleId,WishListTitle,WishListDescription,IsComplete,CreatedDate")] WishList wishList)
         {
-            if (id != maintenanceTask.MaintenanceTaskId)
+            if (id != wishList.WishListId)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace LugNutzEnterprize.Controllers
             {
                 try
                 {
-                    _context.Update(maintenanceTask);
+                    _context.Update(wishList);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MaintenanceTaskExists(maintenanceTask.MaintenanceTaskId))
+                    if (!WishListExists(wishList.WishListId))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace LugNutzEnterprize.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(maintenanceTask);
+            return View(wishList);
         }
 
-        // GET: MaintenanceTasks/Delete/5
+        // GET: WishLists/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace LugNutzEnterprize.Controllers
                 return NotFound();
             }
 
-            var maintenanceTask = await _context.MaintenanceTask
-                .FirstOrDefaultAsync(m => m.MaintenanceTaskId == id);
-            if (maintenanceTask == null)
+            var wishList = await _context.WishList
+                .FirstOrDefaultAsync(m => m.WishListId == id);
+            if (wishList == null)
             {
                 return NotFound();
             }
 
-            return View(maintenanceTask);
+            return View(wishList);
         }
 
-        // POST: MaintenanceTasks/Delete/5
+        // POST: WishLists/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var maintenanceTask = await _context.MaintenanceTask.FindAsync(id);
-            _context.MaintenanceTask.Remove(maintenanceTask);
+            var wishList = await _context.WishList.FindAsync(id);
+            _context.WishList.Remove(wishList);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MaintenanceTaskExists(int id)
+        private bool WishListExists(int id)
         {
-            return _context.MaintenanceTask.Any(e => e.MaintenanceTaskId == id);
+            return _context.WishList.Any(e => e.WishListId == id);
         }
     }
 }
