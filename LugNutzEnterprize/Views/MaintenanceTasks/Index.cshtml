@@ -13,10 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MaintenanceTaskTitle)
+                Task
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaintenanceTaskDescription)
+                Description
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TaskDueAtMileage)
@@ -55,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.TargetCompleteDate)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MaintenanceTaskId" class="btn btn-primary">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.MaintenanceTaskId" class="btn btn-primary">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.MaintenanceTaskId" class="btn btn-primary">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.MaintenanceTaskId" class="btn btn-outline-primary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.MaintenanceTaskId" class="btn btn-outline-primary">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.MaintenanceTaskId" class="btn btn-outline-primary">Delete</a>
             </td>
         </tr>
 }

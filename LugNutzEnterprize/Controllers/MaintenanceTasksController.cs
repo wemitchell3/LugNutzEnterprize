@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LugNutzEnterprize.Data;
 using LugNutzEnterprize.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LugNutzEnterprize.Controllers
 {
+    [Authorize]
     public class MaintenanceTasksController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -86,7 +88,7 @@ namespace LugNutzEnterprize.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MaintenanceTaskId,VehicleId,MaintenanceTaskTitle,MaintenanceTaskDescription,TaskDueAtMileage,IsComplete,DateCreated,TargetCompleteDate")] MaintenanceTask maintenanceTask)
+        public async Task<IActionResult> Edit(int id, [Bind("MaintenanceTaskId,VehicleId,MaintenanceTaskTitle,MaintenanceTaskDescription,TaskDueAtMileage,IsComplete,CreatedDate,TargetCompleteDate")] MaintenanceTask maintenanceTask)
         {
             if (id != maintenanceTask.MaintenanceTaskId)
             {
