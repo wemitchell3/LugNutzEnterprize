@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -37,6 +38,11 @@ namespace LugNutzEnterprize.Models
 
         [Display(Name = "Admin?")]
         public bool IsAdmin { get; set; }
+
+        [Display(Name = "Image Path")]
+        public string ImagePath { get; set; }
+        [NotMapped]
+        public IFormFile Photo { get; set; }
 
         [NotMapped]
         [Display(Name = "Full Name")]

@@ -3,11 +3,15 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using LugNutzEnterprize.Data;
 using LugNutzEnterprize.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -23,18 +27,20 @@ namespace LugNutzEnterprize.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
+        private readonly IHostingEnvironment hostingEnvironment;
 
         public IndexModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             //Passing in ApplicationDbConext to the Index Model
-            ApplicationDbContext context)
+            ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _context = context;
+            this.hostingEnvironment = hostingEnvironment;
         }
 
         public string Username { get; set; }
@@ -79,6 +85,12 @@ namespace LugNutzEnterprize.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Display(Name = "Image Path")]
+            public string ImagePath { get; set; }
+
+            [NotMapped]
+            public IFormFile Photo { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -99,6 +111,7 @@ namespace LugNutzEnterprize.Areas.Identity.Pages.Account.Manage
             var city = user.City;
             var state = user.State;
             var zip = user.Zip;
+            var photo = user.Photo;
 
             Username = userName;
 
@@ -113,6 +126,7 @@ namespace LugNutzEnterprize.Areas.Identity.Pages.Account.Manage
                 City = city,
                 State = state,
                 Zip = zip,
+                Photo = photo,
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
@@ -159,13 +173,34 @@ namespace LugNutzEnterprize.Areas.Identity.Pages.Account.Manage
             {
                 try
                 {
-                    //Checking to make sure the data is valid and has been added to the database.
+                    string uniqueFileName = null;
+
+                    // If the Photo property on the incoming model object is not null, then the user
+                    // has selected an image to upload.
+                    if (Input.Photo != null)
+                    {
+                        // The image must be uploaded to the images folder in wwwroot
+                        // To get the path of the wwwroot folder we are using the inject
+                        // HostingEnvironment service provided by ASP.NET Core
+                        string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                        // To make sure the file name is unique we are appending a new
+                        // GUID value and and an underscore to the file name
+                        uniqueFileName = Guid.NewGuid().ToString() + "_" + Input.Photo.FileName;
+                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                        // Use CopyTo() method provided by IFormFile interface to
+                        // copy the file to wwwroot/images folder
+                        Input.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                        //Checking to make sure the data is valid and has been added to the database.
+                    }
+
                     user.FirstName = Input.FirstName;
                     user.LastName = Input.LastName;
                     user.StreetAddress = Input.StreetAddress;
                     user.City = Input.City;
                     user.State = Input.State;
                     user.Zip = Input.Zip;
+                    user.Photo = Input.Photo;
+                    user.ImagePath = uniqueFileName;
 
                     _context.Update(user);
                     await _context.SaveChangesAsync();

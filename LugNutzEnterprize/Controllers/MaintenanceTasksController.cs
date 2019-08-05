@@ -1,7 +1,9 @@
 ﻿using LugNutzEnterprize.Data;
 using LugNutzEnterprize.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,9 +14,11 @@ namespace LugNutzEnterprize.Controllers
     public class MaintenanceTasksController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public MaintenanceTasksController(ApplicationDbContext context)
+        public MaintenanceTasksController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _context = context;
         }
 
@@ -43,9 +47,18 @@ namespace LugNutzEnterprize.Controllers
         }
 
         // GET: MaintenanceTasks/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            MaintenanceTask maintenanceTask = new MaintenanceTask
+            {
+                VehicleSelectList = await _context.Vehicle.Where(v => v.UserId == currentUser.Id).Select(v => new SelectListItem
+                {
+                    Text = v.FullName,
+                    Value = v.VehicleId.ToString()
+                }).ToListAsync()
+            };
+            return View(maintenanceTask);
         }
 
         // POST: MaintenanceTasks/Create
