@@ -26,7 +26,14 @@ namespace LugNutzPremium.Controllers
         // GET: MaintenanceTasks
         public async Task<IActionResult> Index()
         {
-            return View(await _context.MaintenanceTask.ToListAsync());
+            var maintainenanceTaskList = await _context.MaintenanceTask.ToListAsync();
+            foreach (var item in maintainenanceTaskList)
+            {
+                var Vehicle = await _context.Vehicle.FindAsync(item.VehicleId);
+                ViewBag.VehicleFullName = Vehicle.FullName;
+            }
+
+            return View(maintainenanceTaskList);
         }
 
         // GET: MaintenanceTasks/Details/5

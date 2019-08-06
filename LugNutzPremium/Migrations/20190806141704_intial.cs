@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LugNutzPremium.Migrations
 {
-    public partial class ProjectNameChange : Migration
+    public partial class intial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -387,12 +387,12 @@ namespace LugNutzPremium.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "IsAdmin", "IsMasterMechanic", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "StreetAddress", "TwoFactorEnabled", "UserName", "Zip" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, null, "f3dcd453-528a-4f61-91ce-27b66c832033", "admin@admin.com", true, "Admina", null, false, false, "Straytor", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEC8o79dfwSdc1PqN5ifqTp4klhJ0cCMPvzidAJtnpJQZRgfs7n674I6aolKDpI23hQ==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", null, "123 Infinity Way", false, "admin@admin.com", 0 });
+                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, null, "57662d16-0397-40c5-8f0d-800077784eb0", "admin@admin.com", true, "Admina", null, false, false, "Straytor", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEI3sH6bsrQRpMSdSvcIvONRBhvHvdanqCuyvCq3FMo0XB0EkheFmc+MsoCNqHzUl5A==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", null, "123 Infinity Way", false, "admin@admin.com", 0 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "IsAdmin", "IsMasterMechanic", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "StreetAddress", "TwoFactorEnabled", "UserName", "Zip" },
-                values: new object[] { "45670330-ffff-ffff-ffff-ffffffffffff", 0, null, "b3c73bd7-330e-4d03-a634-d07879a36b06", "billy@billy.com", true, "Billy", null, false, false, "M", false, null, "BILLY@BILLY.COM", "BILLY@BILLY.COM", "AQAAAAEAACcQAAAAEAYxuHs2vAm+btAK34H5Fr15IPBjiVcZfDpsN+JVlHxGio8yDaOTQJjTY2fICu/NTQ==", null, false, "7f004300-a4d9-48e9-9ebb-8803db794577", null, "33 Lover's Lane", false, "billy@billy.com", 0 });
+                values: new object[] { "45670330-ffff-ffff-ffff-ffffffffffff", 0, null, "bdc93386-743e-47f3-90b4-9890e830c775", "billy@billy.com", true, "Billy", null, false, false, "M", false, null, "BILLY@BILLY.COM", "BILLY@BILLY.COM", "AQAAAAEAACcQAAAAEFazK+P6J9igTXrDj8iwgND3pcmeVGqXDsd3J0bMM6UsNozH3+KccUGJOWCo1TZppw==", null, false, "7f004300-a4d9-48e9-9ebb-8803db794577", null, "33 Lover's Lane", false, "billy@billy.com", 0 });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",

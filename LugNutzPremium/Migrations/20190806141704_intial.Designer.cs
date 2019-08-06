@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LugNutzPremium.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190806001832_ProjectNameChange")]
-    partial class ProjectNameChange
+    [Migration("20190806141704_intial")]
+    partial class intial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -96,7 +96,7 @@ namespace LugNutzPremium.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f3dcd453-528a-4f61-91ce-27b66c832033",
+                            ConcurrencyStamp = "57662d16-0397-40c5-8f0d-800077784eb0",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Admina",
@@ -106,7 +106,7 @@ namespace LugNutzPremium.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEC8o79dfwSdc1PqN5ifqTp4klhJ0cCMPvzidAJtnpJQZRgfs7n674I6aolKDpI23hQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI3sH6bsrQRpMSdSvcIvONRBhvHvdanqCuyvCq3FMo0XB0EkheFmc+MsoCNqHzUl5A==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "123 Infinity Way",
@@ -118,7 +118,7 @@ namespace LugNutzPremium.Migrations
                         {
                             Id = "45670330-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b3c73bd7-330e-4d03-a634-d07879a36b06",
+                            ConcurrencyStamp = "bdc93386-743e-47f3-90b4-9890e830c775",
                             Email = "billy@billy.com",
                             EmailConfirmed = true,
                             FirstName = "Billy",
@@ -128,7 +128,7 @@ namespace LugNutzPremium.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BILLY@BILLY.COM",
                             NormalizedUserName = "BILLY@BILLY.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAYxuHs2vAm+btAK34H5Fr15IPBjiVcZfDpsN+JVlHxGio8yDaOTQJjTY2fICu/NTQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFazK+P6J9igTXrDj8iwgND3pcmeVGqXDsd3J0bMM6UsNozH3+KccUGJOWCo1TZppw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f004300-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "33 Lover's Lane",

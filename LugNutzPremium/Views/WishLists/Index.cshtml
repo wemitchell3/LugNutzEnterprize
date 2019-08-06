@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                Vehicle
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.WishListTitle)
             </th>
             <th>
@@ -31,7 +34,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.WishListTitle)
+                @ViewBag.VehicleFullName
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.WishListDescription)

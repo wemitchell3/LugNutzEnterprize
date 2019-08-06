@@ -26,7 +26,14 @@ namespace LugNutzPremium.Controllers
         // GET: WishLists
         public async Task<IActionResult> Index()
         {
-            return View(await _context.WishList.ToListAsync());
+            var wishList = await _context.WishList.ToListAsync();
+            foreach (var item in wishList)
+            {
+                var Vehicle = await _context.Vehicle.FindAsync(item.VehicleId);
+                ViewBag.VehicleFullName = Vehicle.FullName;
+            }
+
+            return View(wishList);
         }
 
         // GET: WishLists/Details/5

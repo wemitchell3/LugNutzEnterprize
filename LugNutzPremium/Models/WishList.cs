@@ -26,15 +26,11 @@ namespace LugNutzPremium.Models
         [Display(Name = "Is Completed?")]
         public bool IsComplete { get; set; }
 
-        [Timestamp]
-        [Display(Name = "Date Created")]
-        public byte[] CreatedDate { get; set; }
-
-        //[Required]
-        //[DataType(DataType.Date)]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        //[Display(Name = "Date Created")]
-        //public DateTime DateCreated { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [Display(Name = "Created Date")]
+        public DateTime CreatedDate { get; set; }
 
         [NotMapped]
         [Display(Name = "Vehicle")]

@@ -40,7 +40,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.VehicleId)
+                @ViewBag.VehicleFullName
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaintenanceTaskTitle)

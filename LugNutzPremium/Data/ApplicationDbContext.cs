@@ -22,6 +22,8 @@ namespace LugNutzPremium.Data
 
         public DbSet<WishList> WishList { get; set; }
 
+        public DbSet<Forum> Forum { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -32,17 +34,17 @@ namespace LugNutzPremium.Data
 
             ApplicationUser user= new ApplicationUser
             {
-                FirstName = "Admina",
-                LastName = "Straytor",
+                FirstName = "Chris",
+                LastName = "Morgan",
                 StreetAddress = "123 Infinity Way",
-                UserName = "admin@admin.com",
-                NormalizedUserName = "ADMIN@ADMIN.COM",
-                Email = "admin@admin.com",
-                NormalizedEmail = "ADMIN@ADMIN.COM",
+                UserName = "chris@chris.com",
+                NormalizedUserName = "CHRIS@CHRIS.COM",
+                Email = "chris@chris.com",
+                NormalizedEmail = "CHRIS@CHRIS.COM",
                 EmailConfirmed = true,
                 LockoutEnabled = false,
                 SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
-                Id = "00000000-ffff-ffff-ffff-ffffffffffff"
+                Id = "12345678-ffff-ffff-ffff-ffffffffffff"
             };
             var passwordHash = new PasswordHasher<ApplicationUser>();
             user.PasswordHash = passwordHash.HashPassword(user, "Admin8*");
