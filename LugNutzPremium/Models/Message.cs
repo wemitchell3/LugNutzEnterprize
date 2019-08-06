@@ -10,6 +10,9 @@ namespace LugNutzPremium.Models
         public int MessageId { get; set; }
 
         [Required]
+        public string MessageContent { get; set; }
+
+        [Required]
         public string UserId { get; set; }
 
         [Required]
@@ -18,13 +21,14 @@ namespace LugNutzPremium.Models
         [Required]
         [DataType(DataType.Date)]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [Display(Name = "Date Created")]
-        public DateTime DateCreated { get; set; }
+        [Display(Name = "Time Stamp")]
+        public DateTime CreatedDate { get; set; }
+
 
         [Required]
-        public string MessageContent { get; set; }
+        public string TopicId { get; set; }
 
         [Required]
-        public string Topic { get; set; }
+        public string TopicName { get; set; }        
     }
 }

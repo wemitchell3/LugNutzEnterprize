@@ -22,7 +22,7 @@ namespace LugNutzPremium.Data
 
         public DbSet<WishList> WishList { get; set; }
 
-        public DbSet<Forum> Forum { get; set; }
+        public DbSet<Topic> Topic { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,22 @@ namespace LugNutzPremium.Data
             modelBuilder.Entity<MaintenanceTask>()
                 .Property(b => b.CreatedDate)
                 .HasDefaultValueSql("GETDATE()");
+
+            modelBuilder.Entity<WishList>()
+               .Property(b => b.CreatedDate)
+               .HasDefaultValueSql("GETDATE()");
+
+            modelBuilder.Entity<Vehicle>()
+               .Property(b => b.CreatedDate)
+               .HasDefaultValueSql("GETDATE()");
+
+            modelBuilder.Entity<Message>()
+               .Property(b => b.CreatedDate)
+               .HasDefaultValueSql("GETDATE()");
+
+            modelBuilder.Entity<Topic>()
+               .Property(b => b.CreatedDate)
+               .HasDefaultValueSql("GETDATE()");
 
             ApplicationUser user= new ApplicationUser
             {

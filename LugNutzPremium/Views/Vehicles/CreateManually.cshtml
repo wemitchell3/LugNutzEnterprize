@@ -47,11 +47,20 @@
                 <input type="submit" value="Submit" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-primary">Cancel</a>
             </div>
+            @*This script is required to display the selected file in the file upload element*@
+
+            @section Scripts {
+                <script>
+                    $(document).ready(function () {
+                        $('.custom-file-input').on("change", function () {
+                            var fileName = $(this).val().split("\\").pop();
+                            $(this).next('.custom-file-label').html(fileName);
+                        });
+                    });
+                </script>
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
         </form>
     </div>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 
