@@ -1,0 +1,65 @@
+﻿@model IEnumerable<LugNutzPremium.Models.MaintenanceTask>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Maintenance Task List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Task
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskDueAtMileage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsComplete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TargetCompleteDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaintenanceTaskTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaintenanceTaskDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskDueAtMileage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsComplete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TargetCompleteDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaintenanceTaskId" class="btn btn-outline-primary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.MaintenanceTaskId" class="btn btn-outline-primary">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.MaintenanceTaskId" class="btn btn-outline-primary">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
