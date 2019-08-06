@@ -1,0 +1,58 @@
+﻿@model LugNutzPremium.Models.MaintenanceTask
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>MaintenanceTask</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MaintenanceTaskId" />
+            @*<div class="form-group">
+            <label asp-for="VehicleId" class="control-label"></label>
+            <input asp-for="VehicleId" class="form-control" />
+            <span asp-validation-for="VehicleId" class="text-danger"></span>
+        </div>*@
+        <div class="form-group">
+            <label class="control-label">Vehicle</label>
+            @Html.DropDownList("VehicleId", Model.VehicleSelectList, new { @class = "form-control" })
+        </div>
+            <div class="form-group">
+                <label asp-for="MaintenanceTaskTitle" class="control-label"></label>
+                <input asp-for="MaintenanceTaskTitle" class="form-control" />
+                <span asp-validation-for="MaintenanceTaskTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaintenanceTaskDescription" class="control-label"></label>
+                <input asp-for="MaintenanceTaskDescription" class="form-control" />
+                <span asp-validation-for="MaintenanceTaskDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TaskDueAtMileage" class="control-label"></label>
+                <input asp-for="TaskDueAtMileage" class="form-control" />
+                <span asp-validation-for="TaskDueAtMileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TargetCompleteDate" class="control-label"></label>
+                <input asp-for="TargetCompleteDate" class="form-control" />
+                <span asp-validation-for="TargetCompleteDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsComplete" /> @Html.DisplayNameFor(model => model.IsComplete)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
