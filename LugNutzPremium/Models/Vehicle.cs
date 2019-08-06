@@ -35,6 +35,13 @@ namespace LugNutzPremium.Models
                 return ModelYear + " " + Make + " " + Model;
             }
         }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [Display(Name = "Time Stamp")]
+
+        public DateTime CreatedDate { get; set; }
         public string ABS { get; set; }
         public string ActiveSafetySysNote { get; set; }
         public string AdaptiveCruiseControl { get; set; }

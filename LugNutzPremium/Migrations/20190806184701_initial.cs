@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LugNutzPremium.Migrations
 {
-    public partial class ProjectNameChange : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -76,6 +76,20 @@ namespace LugNutzPremium.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Topic",
+                columns: table => new
+                {
+                    TopicId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    TopicName = table.Column<int>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Topic", x => x.TopicId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "WishList",
                 columns: table => new
                 {
@@ -85,7 +99,7 @@ namespace LugNutzPremium.Migrations
                     WishListTitle = table.Column<string>(nullable: false),
                     WishListDescription = table.Column<string>(nullable: false),
                     IsComplete = table.Column<bool>(nullable: false),
-                    CreatedDate = table.Column<byte[]>(rowVersion: true, nullable: true)
+                    CreatedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -192,28 +206,6 @@ namespace LugNutzPremium.Migrations
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
                     table.ForeignKey(
                         name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Message",
-                columns: table => new
-                {
-                    MessageId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<string>(nullable: false),
-                    DateCreated = table.Column<DateTime>(nullable: false),
-                    MessageContent = table.Column<string>(nullable: false),
-                    Topic = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Message", x => x.MessageId);
-                    table.ForeignKey(
-                        name: "FK_Message_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -384,20 +376,50 @@ namespace LugNutzPremium.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "IsAdmin", "IsMasterMechanic", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "StreetAddress", "TwoFactorEnabled", "UserName", "Zip" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, null, "f3dcd453-528a-4f61-91ce-27b66c832033", "admin@admin.com", true, "Admina", null, false, false, "Straytor", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEC8o79dfwSdc1PqN5ifqTp4klhJ0cCMPvzidAJtnpJQZRgfs7n674I6aolKDpI23hQ==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", null, "123 Infinity Way", false, "admin@admin.com", 0 });
+            migrationBuilder.CreateTable(
+                name: "Message",
+                columns: table => new
+                {
+                    MessageId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    MessageContent = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    TopicId = table.Column<string>(nullable: false),
+                    TopicName = table.Column<string>(nullable: false),
+                    TopicId1 = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Message", x => x.MessageId);
+                    table.ForeignKey(
+                        name: "FK_Message_Topic_TopicId1",
+                        column: x => x.TopicId1,
+                        principalTable: "Topic",
+                        principalColumn: "TopicId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Message_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "IsAdmin", "IsMasterMechanic", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "StreetAddress", "TwoFactorEnabled", "UserName", "Zip" },
-                values: new object[] { "45670330-ffff-ffff-ffff-ffffffffffff", 0, null, "b3c73bd7-330e-4d03-a634-d07879a36b06", "billy@billy.com", true, "Billy", null, false, false, "M", false, null, "BILLY@BILLY.COM", "BILLY@BILLY.COM", "AQAAAAEAACcQAAAAEAYxuHs2vAm+btAK34H5Fr15IPBjiVcZfDpsN+JVlHxGio8yDaOTQJjTY2fICu/NTQ==", null, false, "7f004300-a4d9-48e9-9ebb-8803db794577", null, "33 Lover's Lane", false, "billy@billy.com", 0 });
+                values: new object[] { "12345678-ffff-ffff-ffff-ffffffffffff", 0, null, "58da6082-c964-4048-a51f-3e800c02d98e", "chris@chris.com", true, "Chris", null, false, false, "Morgan", false, null, "CHRIS@CHRIS.COM", "CHRIS@CHRIS.COM", "AQAAAAEAACcQAAAAEJ6kDbGMfcviHoVYGUxlXOeQv4MohvlzCsMm2Kh7gq7XL/UrPwURV+lCCOFN8SW+vw==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", null, "123 Infinity Way", false, "chris@chris.com", 0 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "IsAdmin", "IsMasterMechanic", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "StreetAddress", "TwoFactorEnabled", "UserName", "Zip" },
+                values: new object[] { "45670330-ffff-ffff-ffff-ffffffffffff", 0, null, "2ed269e0-5977-4f06-8a55-8d62e2f821ed", "billy@billy.com", true, "Billy", null, false, false, "M", false, null, "BILLY@BILLY.COM", "BILLY@BILLY.COM", "AQAAAAEAACcQAAAAEJU2WIO4umGplct+bwYd8h0fqiDcND1hSYQuRM0+8aE514Byv2k/y9wyY+WdVKu1yQ==", null, false, "7f004300-a4d9-48e9-9ebb-8803db794577", null, "33 Lover's Lane", false, "billy@billy.com", 0 });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
                 columns: new[] { "VehicleId", "ABS", "ActiveSafetySysNote", "AdaptiveCruiseControl", "AdaptiveDrivingBeam", "AdaptiveHeadlights", "AdditionalErrorText", "AirBagLocCurtain", "AirBagLocFront", "AirBagLocKnee", "AirBagLocSeatCushion", "AirBagLocSide", "AutoReverseSystem", "AutomaticPedestrianAlertingSound", "AxleConfiguration", "Axles", "BasePrice", "BatteryA", "BatteryA_to", "BatteryCells", "BatteryInfo", "BatteryKWh", "BatteryKWh_to", "BatteryModules", "BatteryPacks", "BatteryType", "BatteryV", "BatteryV_to", "BedLengthIN", "BedType", "BlindSpotMon", "BodyCabType", "BodyClass", "BrakeSystemDesc", "BrakeSystemType", "BusFloorConfigType", "BusLength", "BusType", "CAN_AACN", "CIB", "CashForClunkers", "ChargerLevel", "ChargerPowerKW", "CoolingType", "CurbWeightLB", "CustomMotorcycleType", "DaytimeRunningLight", "DestinationMarket", "DisplacementCC", "DisplacementCI", "DisplacementL", "Doors", "DriveType", "DriverAssist", "DynamicBrakeSupport", "EDR", "ESC", "EVDriveUnit", "ElectrificationLevel", "EngineConfiguration", "EngineCycles", "EngineCylinders", "EngineHP", "EngineHP_to", "EngineKW", "EngineManufacturer", "EngineModel", "EntertainmentSystem", "ErrorCode", "ErrorText", "ForwardCollisionWarning", "FuelInjectionType", "FuelTypePrimary", "FuelTypeSecondary", "GCWR", "GCWR_to", "GVWR", "GVWR_to", "ImagePath", "KeylessIgnition", "LaneDepartureWarning", "LaneKeepSystem", "LowerBeamHeadlampLightSource", "Make", "Manufacturer", "ManufacturerId", "Model", "ModelYear", "MotorcycleChassisType", "MotorcycleSuspensionType", "NCSABodyType", "NCSAMake", "NCSAMapExcApprovedBy", "NCSAMapExcApprovedOn", "NCSAMappingException", "NCSAModel", "NCSANote", "Note", "OtherBusInfo", "OtherEngineInfo", "OtherMotorcycleInfo", "OtherRestraintSystemInfo", "OtherTrailerInfo", "ParkAssist", "PedestrianAutomaticEmergencyBraking", "PlantCity", "PlantCompanyName", "PlantCountry", "PlantState", "PossibleValues", "Pretensioner", "RearCrossTrafficAlert", "RearVisibilitySystem", "SAEAutomationLevel", "SAEAutomationLevel_to", "SeatBeltsAll", "SeatRows", "Seats", "SemiautomaticHeadlampBeamSwitching", "Series", "Series2", "SteeringLocation", "SuggestedVIN", "TPMS", "TopSpeedMPH", "TrackWidth", "TractionControl", "TrailerBodyType", "TrailerLength", "TrailerType", "TransmissionSpeeds", "TransmissionStyle", "Trim", "Trim2", "Turbo", "UserId", "VIN", "ValveTrainDesign", "VehicleMileage", "VehicleType", "WheelBaseLong", "WheelBaseShort", "WheelBaseType", "WheelSizeFront", "WheelSizeRear", "Wheels", "Windows" },
-                values: new object[] { 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "Cadillac", null, null, "XT4", "2019", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "00000000-ffff-ffff-ffff-ffffffffffff", null, null, 0, null, null, null, null, null, null, null, null });
+                values: new object[] { 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "Cadillac", null, null, "XT4", "2019", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "12345678-ffff-ffff-ffff-ffffffffffff", null, null, 0, null, null, null, null, null, null, null, null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -437,6 +459,11 @@ namespace LugNutzPremium.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Message_TopicId1",
+                table: "Message",
+                column: "TopicId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Message_UserId",
@@ -480,6 +507,9 @@ namespace LugNutzPremium.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Topic");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LugNutzPremium.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190806001832_ProjectNameChange")]
-    partial class ProjectNameChange
+    [Migration("20190806190728_initial2")]
+    partial class initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,31 +94,31 @@ namespace LugNutzPremium.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            Id = "12345678-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f3dcd453-528a-4f61-91ce-27b66c832033",
-                            Email = "admin@admin.com",
+                            ConcurrencyStamp = "4b709cde-b356-43d6-9e46-87858635221b",
+                            Email = "chris@chris.com",
                             EmailConfirmed = true,
-                            FirstName = "Admina",
+                            FirstName = "Chris",
                             IsAdmin = false,
                             IsMasterMechanic = false,
-                            LastName = "Straytor",
+                            LastName = "Morgan",
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@ADMIN.COM",
-                            NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEC8o79dfwSdc1PqN5ifqTp4klhJ0cCMPvzidAJtnpJQZRgfs7n674I6aolKDpI23hQ==",
+                            NormalizedEmail = "CHRIS@CHRIS.COM",
+                            NormalizedUserName = "CHRIS@CHRIS.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEECjUFd7m0mBaZWC4pPPR74L+YEOCaBexZDcD6jikXV/4BHT+s5U94jHJdlqIBbzsw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "123 Infinity Way",
                             TwoFactorEnabled = false,
-                            UserName = "admin@admin.com",
+                            UserName = "chris@chris.com",
                             Zip = 0
                         },
                         new
                         {
                             Id = "45670330-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b3c73bd7-330e-4d03-a634-d07879a36b06",
+                            ConcurrencyStamp = "18437cb4-c565-4872-8b2d-a13914817d1f",
                             Email = "billy@billy.com",
                             EmailConfirmed = true,
                             FirstName = "Billy",
@@ -128,7 +128,7 @@ namespace LugNutzPremium.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BILLY@BILLY.COM",
                             NormalizedUserName = "BILLY@BILLY.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAYxuHs2vAm+btAK34H5Fr15IPBjiVcZfDpsN+JVlHxGio8yDaOTQJjTY2fICu/NTQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHaokFSQfSdGGvBVycxbIisPWBVc8fduSY8OsMUjgWIywrhOxl+RcfRlWTDN/Giejg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f004300-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "33 Lover's Lane",
@@ -173,13 +173,19 @@ namespace LugNutzPremium.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateCreated")
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("MessageContent")
                         .IsRequired();
 
-                    b.Property<string>("Topic")
+                    b.Property<string>("TopicId")
+                        .IsRequired();
+
+                    b.Property<int?>("TopicId1");
+
+                    b.Property<string>("TopicName")
                         .IsRequired();
 
                     b.Property<string>("UserId")
@@ -187,9 +193,28 @@ namespace LugNutzPremium.Migrations
 
                     b.HasKey("MessageId");
 
+                    b.HasIndex("TopicId1");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Message");
+                });
+
+            modelBuilder.Entity("LugNutzPremium.Models.Topic", b =>
+                {
+                    b.Property<int>("TopicId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<int>("TopicName");
+
+                    b.HasKey("TopicId");
+
+                    b.ToTable("Topic");
                 });
 
             modelBuilder.Entity("LugNutzPremium.Models.Vehicle", b =>
@@ -283,6 +308,10 @@ namespace LugNutzPremium.Migrations
                     b.Property<string>("ChargerPowerKW");
 
                     b.Property<string>("CoolingType");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("CurbWeightLB");
 
@@ -504,10 +533,11 @@ namespace LugNutzPremium.Migrations
                         new
                         {
                             VehicleId = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Make = "Cadillac",
                             Model = "XT4",
                             ModelYear = "2019",
-                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            UserId = "12345678-ffff-ffff-ffff-ffffffffffff",
                             VehicleMileage = 0
                         });
                 });
@@ -518,9 +548,9 @@ namespace LugNutzPremium.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte[]>("CreatedDate")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<bool>("IsComplete");
 
@@ -653,6 +683,10 @@ namespace LugNutzPremium.Migrations
 
             modelBuilder.Entity("LugNutzPremium.Models.Message", b =>
                 {
+                    b.HasOne("LugNutzPremium.Models.Topic")
+                        .WithMany("Messages")
+                        .HasForeignKey("TopicId1");
+
                     b.HasOne("LugNutzPremium.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
