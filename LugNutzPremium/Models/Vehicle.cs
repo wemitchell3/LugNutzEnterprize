@@ -9,15 +9,21 @@ namespace LugNutzPremium.Models
     {
         [Key]
         public int VehicleId { get; set; }
+
         [Required]
         public string UserId { get; set; }
+
         public ApplicationUser User { get; set; }
+
         [Required]
+        [Display(Name = "Miles on Vehicle")]
         public int VehicleMileage { get; set; }
 
         [Display(Name = "Image Path")]
         public string ImagePath { get; set; }
+
         [NotMapped]
+        [Display(Name = "Vehicle Image")]
         public IFormFile Photo { get; set; }
 
         [NotMapped]
@@ -117,6 +123,7 @@ namespace LugNutzPremium.Models
         [Required]
         public string Model { get; set; }
         [Required]
+        [Display(Name = "Model Year")]
         public string ModelYear { get; set; }
         public string MotorcycleChassisType { get; set; }
         public string MotorcycleSuspensionType { get; set; }

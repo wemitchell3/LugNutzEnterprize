@@ -92,6 +92,15 @@ namespace LugNutzPremium.Controllers
             {
                 return NotFound();
             }
+
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);            
+            {                
+                maintenanceTask.VehicleSelectList = await _context.Vehicle.Where(v => v.UserId == currentUser.Id).Select(v => new SelectListItem
+                {
+                    Text = v.FullName,
+                    Value = v.VehicleId.ToString()
+                }).ToListAsync();
+            }
             return View(maintenanceTask);
         }
 

@@ -13,11 +13,15 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="MaintenanceTaskId" />
-            <div class="form-group">
-                <label asp-for="VehicleId" class="control-label"></label>
-                <input asp-for="VehicleId" class="form-control" />
-                <span asp-validation-for="VehicleId" class="text-danger"></span>
-            </div>
+            @*<div class="form-group">
+            <label asp-for="VehicleId" class="control-label"></label>
+            <input asp-for="VehicleId" class="form-control" />
+            <span asp-validation-for="VehicleId" class="text-danger"></span>
+        </div>*@
+        <div class="form-group">
+            <label class="control-label">Vehicle</label>
+            @Html.DropDownList("VehicleId", Model.VehicleSelectList, new { @class = "form-control" })
+        </div>
             <div class="form-group">
                 <label asp-for="MaintenanceTaskTitle" class="control-label"></label>
                 <input asp-for="MaintenanceTaskTitle" class="form-control" />
@@ -33,12 +37,16 @@
                 <input asp-for="TaskDueAtMileage" class="form-control" />
                 <span asp-validation-for="TaskDueAtMileage" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="TargetCompleteDate" class="control-label"></label>
+                <input asp-for="TargetCompleteDate" class="form-control" />
+                <span asp-validation-for="TargetCompleteDate" class="text-danger"></span>
+            </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="IsComplete" /> @Html.DisplayNameFor(model => model.IsComplete)
                 </label>
             </div>
-            @Html.HiddenFor(model => model.CreatedDate)
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-primary">Cancel</a>

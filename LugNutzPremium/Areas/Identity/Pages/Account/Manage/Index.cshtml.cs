@@ -191,6 +191,7 @@ namespace LugNutzPremium.Areas.Identity.Pages.Account.Manage
                         // copy the file to wwwroot/images folder
                         Input.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
                         //Checking to make sure the data is valid and has been added to the database.
+                        user.ImagePath = uniqueFileName;
                     }
 
                     user.FirstName = Input.FirstName;
@@ -200,7 +201,6 @@ namespace LugNutzPremium.Areas.Identity.Pages.Account.Manage
                     user.State = Input.State;
                     user.Zip = Input.Zip;
                     user.Photo = Input.Photo;
-                    user.ImagePath = uniqueFileName;
 
                     _context.Update(user);
                     await _context.SaveChangesAsync();

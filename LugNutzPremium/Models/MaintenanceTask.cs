@@ -12,21 +12,27 @@ namespace LugNutzPremium.Models
         public int MaintenanceTaskId { get; set; }
 
         [Required]
+        [Display(Name = "Vehicle")]
         public int VehicleId { get; set; }        
 
         [Required]
+        [Display(Name = "Maintenance Task")]
         public string MaintenanceTaskTitle { get; set; }
 
         [Required]
+        [Display(Name = "Maintenance Description")]
         public string MaintenanceTaskDescription { get; set; }
 
         [Required]
+        [Display(Name = "Mileage When Task Is Due?")]
         public int TaskDueAtMileage { get; set; }
 
         [Required]
+        [Display(Name = "Is Completed?")]
         public bool IsComplete { get; set; }
         
         [NotMapped]
+        [Display(Name = "Vehicle")]
         public List<SelectListItem> VehicleSelectList { get; set; }
 
         [Required]

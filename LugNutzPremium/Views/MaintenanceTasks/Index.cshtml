@@ -13,10 +13,13 @@
     <thead>
         <tr>
             <th>
-                Task
+                Vehicle
             </th>
             <th>
-                Description
+                @Html.DisplayNameFor(model => model.MaintenanceTaskTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaintenanceTaskDescription)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TaskDueAtMileage)
@@ -36,6 +39,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaintenanceTaskTitle)
             </td>

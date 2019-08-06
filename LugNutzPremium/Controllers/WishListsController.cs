@@ -1,8 +1,11 @@
 ﻿using LugNutzPremium.Data;
 using LugNutzPremium.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,9 +15,11 @@ namespace LugNutzPremium.Controllers
     public class WishListsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public WishListsController(ApplicationDbContext context)
+        public WishListsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _context = context;
         }
 
@@ -43,9 +48,18 @@ namespace LugNutzPremium.Controllers
         }
 
         // GET: WishLists/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            WishList wishList = new WishList            {
+               
+                VehicleSelectList = await _context.Vehicle.Where(v => v.UserId == currentUser.Id).Select(v => new SelectListItem
+                {
+                    Text = v.FullName,
+                    Value = v.VehicleId.ToString()
+                }).ToListAsync()
+            };
+            return View(wishList);
         }
 
         // POST: WishLists/Create
@@ -76,6 +90,15 @@ namespace LugNutzPremium.Controllers
             if (wishList == null)
             {
                 return NotFound();
+            }
+
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            {
+                wishList.VehicleSelectList = await _context.Vehicle.Where(v => v.UserId == currentUser.Id).Select(v => new SelectListItem
+                {
+                    Text = v.FullName,
+                    Value = v.VehicleId.ToString()
+                }).ToListAsync();
             }
             return View(wishList);
         }
