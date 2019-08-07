@@ -69,49 +69,87 @@ namespace LugNutzPremium.Controllers
         }
 
         // GET: Messages/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var message = await _context.Message.FindAsync(id);
+            if (message == null)
+            {
+                return NotFound();
+            }            
+            return View(message);
         }
 
         // POST: Messages/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, [Bind("MessageId,MessageContent,UserId,TopicId,TopicName")] Message message)
         {
-            try
+            if (id != message.MessageId)
             {
-                // TODO: Add update logic here
+                return NotFound();
+            }
 
+            var currentUser = await GetCurrentUserAsync();
+            ModelState.Remove("UserId");
+            if (ModelState.IsValid)
+            {
+                try
+                {                    
+                    message.UserId = currentUser.Id;
+                    _context.Update(message);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!MessageExists(message.MessageId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(message);
         }
 
         // GET: Messages/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var message = await _context.Message.FirstOrDefaultAsync(m => m.MessageId == id);
+            if (message == null)
+            {
+                return NotFound();
+            }
+
+            return View(message);
         }
 
         // POST: Messages/Delete/5
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var message = await _context.Message.FindAsync(id);
+            _context.Message.Remove(message);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        private bool MessageExists(int id)
+        {
+            return _context.Message.Any(e => e.MessageId == id);
         }
     }
 }
