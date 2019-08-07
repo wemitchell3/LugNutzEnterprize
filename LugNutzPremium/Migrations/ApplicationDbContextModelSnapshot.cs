@@ -94,7 +94,7 @@ namespace LugNutzPremium.Migrations
                         {
                             Id = "12345678-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4b709cde-b356-43d6-9e46-87858635221b",
+                            ConcurrencyStamp = "e8a06700-d08e-4b17-b3ac-794483ff30c3",
                             Email = "chris@chris.com",
                             EmailConfirmed = true,
                             FirstName = "Chris",
@@ -104,7 +104,7 @@ namespace LugNutzPremium.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CHRIS@CHRIS.COM",
                             NormalizedUserName = "CHRIS@CHRIS.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEECjUFd7m0mBaZWC4pPPR74L+YEOCaBexZDcD6jikXV/4BHT+s5U94jHJdlqIBbzsw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEL2LzJnAdSwbsK2dCklcUgO5rQHzVdwTZCagExWh8pPmt6U5z7wM7LWX0ZPkbY3YZA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "123 Infinity Way",
@@ -116,7 +116,7 @@ namespace LugNutzPremium.Migrations
                         {
                             Id = "45670330-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "18437cb4-c565-4872-8b2d-a13914817d1f",
+                            ConcurrencyStamp = "3df857ea-061d-4238-b955-15e3a67ddf54",
                             Email = "billy@billy.com",
                             EmailConfirmed = true,
                             FirstName = "Billy",
@@ -126,7 +126,7 @@ namespace LugNutzPremium.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BILLY@BILLY.COM",
                             NormalizedUserName = "BILLY@BILLY.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHaokFSQfSdGGvBVycxbIisPWBVc8fduSY8OsMUjgWIywrhOxl+RcfRlWTDN/Giejg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDcRXEPUcYaIHhX15v0xaUcEbDcF6UU0EwTACUEMWQEY+rg9qTIHMdecr9Qnx+neOw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f004300-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "33 Lover's Lane",
@@ -178,41 +178,18 @@ namespace LugNutzPremium.Migrations
                     b.Property<string>("MessageContent")
                         .IsRequired();
 
-                    b.Property<string>("TopicId")
-                        .IsRequired();
+                    b.Property<string>("TopicId");
 
-                    b.Property<int?>("TopicId1");
-
-                    b.Property<string>("TopicName")
-                        .IsRequired();
+                    b.Property<string>("TopicName");
 
                     b.Property<string>("UserId")
                         .IsRequired();
 
                     b.HasKey("MessageId");
 
-                    b.HasIndex("TopicId1");
-
                     b.HasIndex("UserId");
 
                     b.ToTable("Message");
-                });
-
-            modelBuilder.Entity("LugNutzPremium.Models.Topic", b =>
-                {
-                    b.Property<int>("TopicId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasDefaultValueSql("GETDATE()");
-
-                    b.Property<int>("TopicName");
-
-                    b.HasKey("TopicId");
-
-                    b.ToTable("Topic");
                 });
 
             modelBuilder.Entity("LugNutzPremium.Models.Vehicle", b =>
@@ -681,10 +658,6 @@ namespace LugNutzPremium.Migrations
 
             modelBuilder.Entity("LugNutzPremium.Models.Message", b =>
                 {
-                    b.HasOne("LugNutzPremium.Models.Topic")
-                        .WithMany("Messages")
-                        .HasForeignKey("TopicId1");
-
                     b.HasOne("LugNutzPremium.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")

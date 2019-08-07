@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LugNutzPremium.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190806184701_initial")]
-    partial class initial
+    [Migration("20190806203606_initial1")]
+    partial class initial1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -96,7 +96,7 @@ namespace LugNutzPremium.Migrations
                         {
                             Id = "12345678-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "58da6082-c964-4048-a51f-3e800c02d98e",
+                            ConcurrencyStamp = "d774a3b9-fe07-4696-bbb8-8c380b5ce550",
                             Email = "chris@chris.com",
                             EmailConfirmed = true,
                             FirstName = "Chris",
@@ -106,7 +106,7 @@ namespace LugNutzPremium.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CHRIS@CHRIS.COM",
                             NormalizedUserName = "CHRIS@CHRIS.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ6kDbGMfcviHoVYGUxlXOeQv4MohvlzCsMm2Kh7gq7XL/UrPwURV+lCCOFN8SW+vw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEYHvwpUnMwztteP3VHWV6KQ+BHKHiEnkRylAY2EVbzTmkJ9JaiLfDjrW/Dy4kEbrw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "123 Infinity Way",
@@ -118,7 +118,7 @@ namespace LugNutzPremium.Migrations
                         {
                             Id = "45670330-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2ed269e0-5977-4f06-8a55-8d62e2f821ed",
+                            ConcurrencyStamp = "c4262351-5620-4ef9-af78-bc3acaf7fa72",
                             Email = "billy@billy.com",
                             EmailConfirmed = true,
                             FirstName = "Billy",
@@ -128,7 +128,7 @@ namespace LugNutzPremium.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BILLY@BILLY.COM",
                             NormalizedUserName = "BILLY@BILLY.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJU2WIO4umGplct+bwYd8h0fqiDcND1hSYQuRM0+8aE514Byv2k/y9wyY+WdVKu1yQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELP2WGmuWTdQ9eR9tmE3j54cOZZoohrw9nUPb1dc7iPMx1x494PZUIdwIyDVdPTquA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f004300-a4d9-48e9-9ebb-8803db794577",
                             StreetAddress = "33 Lover's Lane",
@@ -174,15 +174,14 @@ namespace LugNutzPremium.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("MessageContent")
                         .IsRequired();
 
                     b.Property<string>("TopicId")
                         .IsRequired();
-
-                    b.Property<int?>("TopicId1");
 
                     b.Property<string>("TopicName")
                         .IsRequired();
@@ -192,27 +191,9 @@ namespace LugNutzPremium.Migrations
 
                     b.HasKey("MessageId");
 
-                    b.HasIndex("TopicId1");
-
                     b.HasIndex("UserId");
 
                     b.ToTable("Message");
-                });
-
-            modelBuilder.Entity("LugNutzPremium.Models.Topic", b =>
-                {
-                    b.Property<int>("TopicId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAddOrUpdate();
-
-                    b.Property<int>("TopicName");
-
-                    b.HasKey("TopicId");
-
-                    b.ToTable("Topic");
                 });
 
             modelBuilder.Entity("LugNutzPremium.Models.Vehicle", b =>
@@ -306,6 +287,10 @@ namespace LugNutzPremium.Migrations
                     b.Property<string>("ChargerPowerKW");
 
                     b.Property<string>("CoolingType");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("CurbWeightLB");
 
@@ -527,6 +512,7 @@ namespace LugNutzPremium.Migrations
                         new
                         {
                             VehicleId = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Make = "Cadillac",
                             Model = "XT4",
                             ModelYear = "2019",
@@ -542,7 +528,8 @@ namespace LugNutzPremium.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<bool>("IsComplete");
 
@@ -675,10 +662,6 @@ namespace LugNutzPremium.Migrations
 
             modelBuilder.Entity("LugNutzPremium.Models.Message", b =>
                 {
-                    b.HasOne("LugNutzPremium.Models.Topic")
-                        .WithMany("Messages")
-                        .HasForeignKey("TopicId1");
-
                     b.HasOne("LugNutzPremium.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
