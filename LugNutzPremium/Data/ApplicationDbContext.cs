@@ -22,8 +22,6 @@ namespace LugNutzPremium.Data
 
         public DbSet<WishList> WishList { get; set; }
 
-        public DbSet<Topic> Topic { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -41,10 +39,6 @@ namespace LugNutzPremium.Data
                .HasDefaultValueSql("GETDATE()");
 
             modelBuilder.Entity<Message>()
-               .Property(b => b.CreatedDate)
-               .HasDefaultValueSql("GETDATE()");
-
-            modelBuilder.Entity<Topic>()
                .Property(b => b.CreatedDate)
                .HasDefaultValueSql("GETDATE()");
 

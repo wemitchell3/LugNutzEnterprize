@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LugNutzPremium.Migrations
 {
-    public partial class initial : Migration
+    public partial class initial1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -76,20 +76,6 @@ namespace LugNutzPremium.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Topic",
-                columns: table => new
-                {
-                    TopicId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    TopicName = table.Column<int>(nullable: false),
-                    CreatedDate = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Topic", x => x.TopicId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "WishList",
                 columns: table => new
                 {
@@ -99,7 +85,7 @@ namespace LugNutzPremium.Migrations
                     WishListTitle = table.Column<string>(nullable: false),
                     WishListDescription = table.Column<string>(nullable: false),
                     IsComplete = table.Column<bool>(nullable: false),
-                    CreatedDate = table.Column<DateTime>(nullable: false)
+                    CreatedDate = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()")
                 },
                 constraints: table =>
                 {
@@ -213,6 +199,29 @@ namespace LugNutzPremium.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Message",
+                columns: table => new
+                {
+                    MessageId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    MessageContent = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: false),
+                    TopicId = table.Column<string>(nullable: false),
+                    TopicName = table.Column<string>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Message", x => x.MessageId);
+                    table.ForeignKey(
+                        name: "FK_Message_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Vehicle",
                 columns: table => new
                 {
@@ -221,6 +230,7 @@ namespace LugNutzPremium.Migrations
                     UserId = table.Column<string>(nullable: false),
                     VehicleMileage = table.Column<int>(nullable: false),
                     ImagePath = table.Column<string>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()"),
                     ABS = table.Column<string>(nullable: true),
                     ActiveSafetySysNote = table.Column<string>(nullable: true),
                     AdaptiveCruiseControl = table.Column<string>(nullable: true),
@@ -376,45 +386,15 @@ namespace LugNutzPremium.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Message",
-                columns: table => new
-                {
-                    MessageId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    MessageContent = table.Column<string>(nullable: false),
-                    UserId = table.Column<string>(nullable: false),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
-                    TopicId = table.Column<string>(nullable: false),
-                    TopicName = table.Column<string>(nullable: false),
-                    TopicId1 = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Message", x => x.MessageId);
-                    table.ForeignKey(
-                        name: "FK_Message_Topic_TopicId1",
-                        column: x => x.TopicId1,
-                        principalTable: "Topic",
-                        principalColumn: "TopicId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Message_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "IsAdmin", "IsMasterMechanic", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "StreetAddress", "TwoFactorEnabled", "UserName", "Zip" },
+                values: new object[] { "12345678-ffff-ffff-ffff-ffffffffffff", 0, null, "d774a3b9-fe07-4696-bbb8-8c380b5ce550", "chris@chris.com", true, "Chris", null, false, false, "Morgan", false, null, "CHRIS@CHRIS.COM", "CHRIS@CHRIS.COM", "AQAAAAEAACcQAAAAEEYHvwpUnMwztteP3VHWV6KQ+BHKHiEnkRylAY2EVbzTmkJ9JaiLfDjrW/Dy4kEbrw==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", null, "123 Infinity Way", false, "chris@chris.com", 0 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "IsAdmin", "IsMasterMechanic", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "StreetAddress", "TwoFactorEnabled", "UserName", "Zip" },
-                values: new object[] { "12345678-ffff-ffff-ffff-ffffffffffff", 0, null, "58da6082-c964-4048-a51f-3e800c02d98e", "chris@chris.com", true, "Chris", null, false, false, "Morgan", false, null, "CHRIS@CHRIS.COM", "CHRIS@CHRIS.COM", "AQAAAAEAACcQAAAAEJ6kDbGMfcviHoVYGUxlXOeQv4MohvlzCsMm2Kh7gq7XL/UrPwURV+lCCOFN8SW+vw==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", null, "123 Infinity Way", false, "chris@chris.com", 0 });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "IsAdmin", "IsMasterMechanic", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "StreetAddress", "TwoFactorEnabled", "UserName", "Zip" },
-                values: new object[] { "45670330-ffff-ffff-ffff-ffffffffffff", 0, null, "2ed269e0-5977-4f06-8a55-8d62e2f821ed", "billy@billy.com", true, "Billy", null, false, false, "M", false, null, "BILLY@BILLY.COM", "BILLY@BILLY.COM", "AQAAAAEAACcQAAAAEJU2WIO4umGplct+bwYd8h0fqiDcND1hSYQuRM0+8aE514Byv2k/y9wyY+WdVKu1yQ==", null, false, "7f004300-a4d9-48e9-9ebb-8803db794577", null, "33 Lover's Lane", false, "billy@billy.com", 0 });
+                values: new object[] { "45670330-ffff-ffff-ffff-ffffffffffff", 0, null, "c4262351-5620-4ef9-af78-bc3acaf7fa72", "billy@billy.com", true, "Billy", null, false, false, "M", false, null, "BILLY@BILLY.COM", "BILLY@BILLY.COM", "AQAAAAEAACcQAAAAELP2WGmuWTdQ9eR9tmE3j54cOZZoohrw9nUPb1dc7iPMx1x494PZUIdwIyDVdPTquA==", null, false, "7f004300-a4d9-48e9-9ebb-8803db794577", null, "33 Lover's Lane", false, "billy@billy.com", 0 });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
@@ -461,11 +441,6 @@ namespace LugNutzPremium.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Message_TopicId1",
-                table: "Message",
-                column: "TopicId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Message_UserId",
                 table: "Message",
                 column: "UserId");
@@ -507,9 +482,6 @@ namespace LugNutzPremium.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "Topic");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
