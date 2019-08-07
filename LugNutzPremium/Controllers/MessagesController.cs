@@ -32,12 +32,10 @@ namespace LugNutzPremium.Controllers
         // GET: Messages
         public async Task<IActionResult> Index()
         {
-            var messageList = await _context.Message.ToListAsync();
-            foreach (var item in messageList)
-            {
-                var user = await _context.Users.FindAsync(item.UserId);
-                ViewBag.UserName = user.FirstName;
-            }            
+            var messageList = await _context.Message.Include(m => m.User).ToListAsync();
+            var currentUser = await GetCurrentUserAsync();
+            ViewBag.currentUser = currentUser;
+
             return View(messageList);
         }
 
