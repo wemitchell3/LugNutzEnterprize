@@ -14,8 +14,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="VehicleId" />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-primary">Cancel</a>
+                <input type="submit" value="Save" class="btn btn-outline-light" />
+                <a asp-action="Index" class="btn btn-outline-light">Cancel</a>
             </div>
             @*  asp-for tag helper is set to "Photo" property. "Photo" property type is IFormFile so at runtime asp.net core generates file upload control (input type=file)
             *@
@@ -753,8 +753,8 @@
                 <span asp-validation-for="Windows" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-primary">Cancel</a>
+                <input type="submit" value="Save" class="btn btn-outline-light" />
+                <a asp-action="Index" class="btn btn-outline-light">Cancel</a>
             </div>
             @*This script is required to display the selected file in the file upload element*@
 

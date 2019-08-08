@@ -7,7 +7,7 @@
 <h1>Maintenance Task List</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
+    <a asp-action="Create" class="btn btn-outline-light">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -61,9 +61,9 @@
                 @Html.DisplayFor(modelItem => item.TargetCompleteDate)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MaintenanceTaskId" class="btn btn-outline-primary">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.MaintenanceTaskId" class="btn btn-outline-primary">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.MaintenanceTaskId" class="btn btn-outline-primary">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.MaintenanceTaskId" class="btn btn-outline-light">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.MaintenanceTaskId" class="btn btn-outline-light">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.MaintenanceTaskId" class="btn btn-outline-light">Delete</a>
             </td>
         </tr>
 }

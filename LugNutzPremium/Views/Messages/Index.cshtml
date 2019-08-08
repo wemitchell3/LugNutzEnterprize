@@ -1,35 +1,36 @@
 ﻿@model IEnumerable<LugNutzPremium.Models.Message>
 
-    @{
-        ViewData["Title"] = "List";
-    }
+@{
+    ViewData["Title"] = "List";
+}
 
-    <h1>List</h1>
+<h1>Message Board</h1>
 
-    <p>
-        <a asp-action="Create" class="btn btn-primary">Create New</a>
-    </p>           
-    <section class="messageListContainer">
-        @foreach (var item in Model)
-        {
-            <div class="messageContainer">
-                <div class="messageUserName">
-                    @Html.DisplayFor(modelItem => item.User.FirstName)
-                </div>
-                <div class="messageContent">
-                    @Html.DisplayFor(modelItem => item.MessageContent)
-                </div>
-                <div class="messageCreatedDate">
-                    @Html.DisplayFor(modelItem => item.CreatedDate)
-                </div>
+<p>
+        <a asp-action="Create" class="btn btn-outline-light">Post</a>
+</p>
+
+<section class="messageListContainer">
+    @foreach (var item in Model)
+    {
+        <div class="messageContainer">
+            <div class="messageCreatedDate">
+                @Html.DisplayFor(modelItem => item.CreatedDate)
             </div>
-                @if (item.UserId == ViewBag.currentUser.Id)
-                {
-                    <div class="messageEditDeleteContainer">
-                        <a asp-action="Edit" asp-route-id="@item.MessageId" class="btn btn-outline-primary">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@item.MessageId" class="btn btn-outline-primary">Delete</a>
-                    </div>
-                }
+            <div class="messageUserName">
+                @Html.DisplayFor(modelItem => item.User.FirstName)
+            </div>
+            <div class="messageContent">
+                @Html.DisplayFor(modelItem => item.MessageContent)
+            </div>
+        </div>
+        @if (item.UserId == ViewBag.currentUser.Id)
+        {
+            <div class="messageEditDeleteContainer">
+                <a asp-action="Edit" asp-route-id="@item.MessageId" class="btn btn-outline-light">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.MessageId" class="btn btn-outline-light">Delete</a>
+            </div>
         }
-    </section>
-    
+    }
+</section>
+
