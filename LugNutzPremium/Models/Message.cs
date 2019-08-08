@@ -26,7 +26,7 @@ namespace LugNutzPremium.Models
         [DataType(DataType.DateTime)]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Display(Name = "Time Stamp")]
-        [DisplayFormat(DataFormatString = "{0:dddd, MMMM dd yyyy h:mm:ss tt}")]
+        [DisplayFormat(DataFormatString = "{0:MMMM dd yyyy h:mm:ss tt}")]
         public DateTime CreatedDate { get; set; }
     }
 }

@@ -8,44 +8,28 @@
 
     <p>
         <a asp-action="Create" class="btn btn-primary">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.User)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MessageContent)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreatedDate)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MessageContent)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreatedDate)
-                    </td>
-
-                    @if (item.UserId == ViewBag.currentUser.Id)
-                    {
-                    <td>
+    </p>           
+    <section class="messageListContainer">
+        @foreach (var item in Model)
+        {
+            <div class="messageContainer">
+                <div class="messageUserName">
+                    @Html.DisplayFor(modelItem => item.User.FirstName)
+                </div>
+                <div class="messageContent">
+                    @Html.DisplayFor(modelItem => item.MessageContent)
+                </div>
+                <div class="messageCreatedDate">
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </div>
+            </div>
+                @if (item.UserId == ViewBag.currentUser.Id)
+                {
+                    <div class="messageEditDeleteContainer">
                         <a asp-action="Edit" asp-route-id="@item.MessageId" class="btn btn-outline-primary">Edit</a>
                         <a asp-action="Delete" asp-route-id="@item.MessageId" class="btn btn-outline-primary">Delete</a>
-                    </td>
-                    }
-                </tr>
-            }
-        </tbody>
-    </table>
+                    </div>
+                }
+        }
+    </section>
+    

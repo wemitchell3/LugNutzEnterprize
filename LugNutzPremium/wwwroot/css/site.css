@@ -12,11 +12,26 @@ a.navbar-brand {
     width: auto;
 }
 
+.messageContainer {
+    margin-bottom: 20px;    
+    background-color: #1770ff;
+    color: white;
+    padding: 20px;
+    max-width: 1000px;
+    border-radius: 10px;
+}
+
+.messageEditDeleteContainer {
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
   font-size: 14px;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -26,6 +41,7 @@ html {
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
 }
