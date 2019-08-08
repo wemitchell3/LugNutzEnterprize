@@ -32,7 +32,16 @@ namespace LugNutzPremium.Controllers
         // GET: Messages
         public async Task<IActionResult> Index()
         {
-            var messageList = await _context.Message.Include(m => m.User).ToListAsync();
+            //This is one way I came up with listing and sorting the messages with the most recent one on top.
+
+            //var messageList = await _context.Message.Include(m => m.User).ToListAsync();
+            //List<Message> SortedList = messageList.OrderByDescending(m => m.CreatedDate).ToList();
+            //ViewBag.currentUser = currentUser;
+
+            //return View(messageList);
+
+            //Here is a refactored version.
+            var messageList = await _context.Message.Include(m => m.User).OrderByDescending(m => m.CreatedDate).ToListAsync();
             var currentUser = await GetCurrentUserAsync();
             ViewBag.currentUser = currentUser;
 
