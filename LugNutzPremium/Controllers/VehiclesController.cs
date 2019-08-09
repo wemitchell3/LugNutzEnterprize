@@ -34,8 +34,8 @@ namespace LugNutzPremium.Controllers
         public async Task<IActionResult> Index()
         {
             var currentUser = await GetCurrentUserAsync();
-            var applicationDbContext = _context.Vehicle.Include(v => v.User).Where(v => v.UserId == currentUser.Id);
-            return View(await applicationDbContext.ToListAsync());         
+            var applicationDbContext = await _context.Vehicle.Include(v => v.User).Where(v => v.UserId == currentUser.Id).ToListAsync();            
+            return View(applicationDbContext);         
         }
 
         // GET: Vehicles/Details/5
@@ -84,6 +84,7 @@ namespace LugNutzPremium.Controllers
             {
                 BaseAddress = new Uri(url)
             };
+
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             try
             {
