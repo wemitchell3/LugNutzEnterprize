@@ -22,7 +22,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LugNutz Premium</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -35,19 +35,19 @@
                         @if (SignInManager.IsSignedIn(User))
                         {
                             @*<li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>*@
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Vehicles" asp-action="Index">Garage</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Vehicles" asp-action="Index">Garage</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="MaintenanceTasks" asp-action="Index">Maintenance Tasks</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="MaintenanceTasks" asp-action="Index">Maintenance Tasks</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="WishLists" asp-action="Index">Wish List</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="WishLists" asp-action="Index">Wish List</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Messages" asp-action="Index">Message Board</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Messages" asp-action="Index">Message Board</a>
                             </li>
                         }
                     </ul>
