@@ -1,6 +1,6 @@
-# LugNutzbPremium
+# LugNutz Premium
 
-Welcome to the LugNutzbPremium!
+Welcome to the LugNutz Premium!
 
 ## Project links to Initial Proposale, Mock Up, and ERD. 
 
