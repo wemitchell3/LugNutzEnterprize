@@ -26,14 +26,26 @@ namespace LugNutzPremium.Controllers
         // GET: MaintenanceTasks
         public async Task<IActionResult> Index()
         {
-            var maintainenanceTaskList = await _context.MaintenanceTask.ToListAsync();
-            foreach (var item in maintainenanceTaskList)
+            var maintenanceTaskList = await _context.MaintenanceTask.ToListAsync();
+            foreach (var item in maintenanceTaskList)
             {
                 var Vehicle = await _context.Vehicle.FindAsync(item.VehicleId);
                 ViewBag.VehicleFullName = Vehicle.FullName;
             }
 
-            return View(maintainenanceTaskList);
+            return View(maintenanceTaskList);
+
+            //var maintenanceTaskList = await _context.maintenanceTask.Include(m => m.User).OrderByDescending(m => m.CreatedDate).ToListAsync();
+            //var currentUser = await GetCurrentUserAsync();
+            //ViewBag.currentUser = currentUser;
+
+            //return View(maintenanceTaskList);
+
+            //var maintenanceTaskList = await _context.MaintenanceTask.OrderByDescending(m => m.CreatedDate).ToListAsync();
+            //var vehicle = await _context.Vehicle.ToListAsync();
+            //ViewBag.vehicle = vehicle;
+
+            //return View(maintenanceTaskList);
         }
 
         // GET: MaintenanceTasks/Details/5

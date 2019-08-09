@@ -6,14 +6,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LugNutzPremium.Models
 {
-    public class MaintenanceTask : Attribute   
+    public class MaintenanceTask : Attribute
     {
+
         [Key]
         public int MaintenanceTaskId { get; set; }
 
         [Required]
         [Display(Name = "Vehicle")]
-        public int VehicleId { get; set; }        
+        public int VehicleId { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Vehicle Name")]
+        public string VehicleFullName { get; set; }
 
         [Required]
         [Display(Name = "Maintenance Task")]
@@ -24,7 +29,7 @@ namespace LugNutzPremium.Models
         public string MaintenanceTaskDescription { get; set; }
 
         [Required]
-        [Display(Name = "Mileage When Task Is Due?")]
+        [Display(Name = "Mileage Due?")]
         public int TaskDueAtMileage { get; set; }
 
         [Required]
@@ -45,6 +50,12 @@ namespace LugNutzPremium.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Display(Name = "Date Created")]
         public DateTime CreatedDate { get; set; }
+
+        [NotMapped]
+        public List<MaintenanceTask> MaintainenanceTaskList { get; set; }
+
+        [NotMapped]
+        public List<MaintenanceTask> VehicleFullNameList { get; set; }
 
         //public DateTime CreatedDate { get; set; }
         //public DateTime ModifiedDate { get; set; }

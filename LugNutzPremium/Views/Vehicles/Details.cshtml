@@ -14,12 +14,14 @@
                 if (property.Name != "UserId" && property.Name != "VehicleId" && property.Name != "ImagePath")
                 {
                     html +=
-                    $@"<dt class='col-sm-2'>
-                    {property.Name}
-                </dt>
-                <dd class='col-sm-10'>
-                    {property.GetValue(Model)}
-                </dd>";
+                    $@"<div class=vehicleSpecContainer>
+                            <dt>
+                                {property.Name}                            
+                            <dd>
+                                {property.GetValue(Model)}
+                            </dd>
+                        </div>";
+                    
                 }
             }
         }

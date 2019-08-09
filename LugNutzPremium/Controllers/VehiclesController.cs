@@ -80,10 +80,11 @@ namespace LugNutzPremium.Controllers
             string url = $"https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvalues/{vehicle.VIN}?format=json";
 
 
-            HttpClient client = new HttpClient
+            HttpClient httpClient = new HttpClient
             {
                 BaseAddress = new Uri(url)
             };
+            HttpClient client = httpClient;
 
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             try
