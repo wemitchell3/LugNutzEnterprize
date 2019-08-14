@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LugNutzPremium.Migrations
 {
-    public partial class initial1 : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,11 +63,11 @@ namespace LugNutzPremium.Migrations
                     MaintenanceTaskId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     VehicleId = table.Column<int>(nullable: false),
+                    TargetCompleteDate = table.Column<DateTime>(nullable: false),
                     MaintenanceTaskTitle = table.Column<string>(nullable: false),
                     MaintenanceTaskDescription = table.Column<string>(nullable: false),
                     TaskDueAtMileage = table.Column<int>(nullable: false),
                     IsComplete = table.Column<bool>(nullable: false),
-                    TargetCompleteDate = table.Column<DateTime>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()")
                 },
                 constraints: table =>
@@ -206,8 +206,8 @@ namespace LugNutzPremium.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     MessageContent = table.Column<string>(nullable: false),
                     UserId = table.Column<string>(nullable: false),
-                    TopicId = table.Column<string>(nullable: false),
-                    TopicName = table.Column<string>(nullable: false),
+                    TopicId = table.Column<string>(nullable: true),
+                    TopicName = table.Column<string>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()")
                 },
                 constraints: table =>
@@ -389,12 +389,12 @@ namespace LugNutzPremium.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "IsAdmin", "IsMasterMechanic", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "StreetAddress", "TwoFactorEnabled", "UserName", "Zip" },
-                values: new object[] { "12345678-ffff-ffff-ffff-ffffffffffff", 0, null, "d774a3b9-fe07-4696-bbb8-8c380b5ce550", "chris@chris.com", true, "Chris", null, false, false, "Morgan", false, null, "CHRIS@CHRIS.COM", "CHRIS@CHRIS.COM", "AQAAAAEAACcQAAAAEEYHvwpUnMwztteP3VHWV6KQ+BHKHiEnkRylAY2EVbzTmkJ9JaiLfDjrW/Dy4kEbrw==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", null, "123 Infinity Way", false, "chris@chris.com", 0 });
+                values: new object[] { "12345678-ffff-ffff-ffff-ffffffffffff", 0, null, "fc219919-ca48-43e9-81a7-e618159b87c3", "chris@chris.com", true, "Chris", null, false, false, "Morgan", false, null, "CHRIS@CHRIS.COM", "CHRIS@CHRIS.COM", "AQAAAAEAACcQAAAAELeX6wEvgSFE/y17MEdNcYVlR2VixCzTkNv7xPyqOiC1FTpMXzdJQhEYZGZYgN2/9g==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", null, "123 Infinity Way", false, "chris@chris.com", 0 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "IsAdmin", "IsMasterMechanic", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "State", "StreetAddress", "TwoFactorEnabled", "UserName", "Zip" },
-                values: new object[] { "45670330-ffff-ffff-ffff-ffffffffffff", 0, null, "c4262351-5620-4ef9-af78-bc3acaf7fa72", "billy@billy.com", true, "Billy", null, false, false, "M", false, null, "BILLY@BILLY.COM", "BILLY@BILLY.COM", "AQAAAAEAACcQAAAAELP2WGmuWTdQ9eR9tmE3j54cOZZoohrw9nUPb1dc7iPMx1x494PZUIdwIyDVdPTquA==", null, false, "7f004300-a4d9-48e9-9ebb-8803db794577", null, "33 Lover's Lane", false, "billy@billy.com", 0 });
+                values: new object[] { "45670330-ffff-ffff-ffff-ffffffffffff", 0, null, "79095f6d-c9da-4bda-ae7f-bd32044f7930", "billy@billy.com", true, "Billy", null, false, false, "M", false, null, "BILLY@BILLY.COM", "BILLY@BILLY.COM", "AQAAAAEAACcQAAAAEHIomhd772F3F0gkJVGFNINwOsCGSvqS95HVJi8Qy+ZTU2FXS14gKaaT1KtwNDPTuQ==", null, false, "7f004300-a4d9-48e9-9ebb-8803db794577", null, "33 Lover's Lane", false, "billy@billy.com", 0 });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
