@@ -14,16 +14,20 @@ namespace LugNutzPremium.Models
         [Required]
         public int VehicleId { get; set; }
 
+        [NotMapped]
+        [Display(Name = "Vehicle Name")]
+        public string VehicleFullName { get; set; }
+
         [Required]
         [Display(Name = "Wish List Item")]
         public string WishListTitle { get; set; }
 
         [Required]
-        [Display(Name = "Wish List Item Description")]
+        [Display(Name = "Notes")]
         public string WishListDescription { get; set; }
 
         [Required]
-        [Display(Name = "Is Completed?")]
+        [Display(Name = "Completed?")]
         public bool IsComplete { get; set; }
 
         [Required]
