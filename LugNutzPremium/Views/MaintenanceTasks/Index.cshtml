@@ -13,22 +13,16 @@
     <thead>
         <tr>
             <th>
-                Vehicle
+                @Html.DisplayNameFor(model => model.VehicleId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MaintenanceTaskTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaintenanceTaskDescription)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TaskDueAtMileage)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsComplete)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TargetCompleteDate)
@@ -40,22 +34,17 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @ViewBag.VehicleFullName
+                @*@Html.DisplayFor(modelItem => item.VehicleFullName)*@
+                @ViewBag.Ve
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaintenanceTaskTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaintenanceTaskDescription)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TaskDueAtMileage)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsComplete)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TargetCompleteDate)

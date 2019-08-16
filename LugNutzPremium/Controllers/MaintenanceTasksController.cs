@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 
 namespace LugNutzPremium.Controllers
 {
@@ -27,13 +27,20 @@ namespace LugNutzPremium.Controllers
         public async Task<IActionResult> Index()
         {
             var maintenanceTaskList = await _context.MaintenanceTask.ToListAsync();
-            foreach (var item in maintenanceTaskList)
-            {
-                var Vehicle = await _context.Vehicle.FindAsync(item.VehicleId);
-                ViewBag.VehicleFullName = Vehicle.FullName;
-            }
+            var vehicle = await _context.Vehicle.ToListAsync();
+
+            ViewBag.vehicle = vehicle;
 
             return View(maintenanceTaskList);
+
+            //var maintenanceTaskList = await _context.MaintenanceTask.ToListAsync();
+            //foreach (var item in maintenanceTaskList)
+            //{
+            //    var Vehicle = await _context.Vehicle.FindAsync(item.VehicleId);
+            //    ViewBag.VehicleFullName = Vehicle.FullName;
+            //}
+
+            //return View(maintenanceTaskList);
 
             //var maintenanceTaskList = await _context.maintenanceTask.Include(m => m.User).OrderByDescending(m => m.CreatedDate).ToListAsync();
             //var currentUser = await GetCurrentUserAsync();
