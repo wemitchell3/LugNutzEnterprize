@@ -8,7 +8,6 @@ namespace LugNutzPremium.Models
 {
     public class MaintenanceTask : Attribute
     {
-
         [Key]
         public int MaintenanceTaskId { get; set; }
 
@@ -50,8 +49,5 @@ namespace LugNutzPremium.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Display(Name = "Date Created")]
         public DateTime CreatedDate { get; set; }
-
-        [NotMapped]
-        public List<MaintenanceTask> VehicleFullNameList { get; set; }
     }
 }
