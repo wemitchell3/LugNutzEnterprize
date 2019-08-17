@@ -25,13 +25,25 @@ namespace LugNutzPremium.Controllers
 
         // GET: MaintenanceTasks
         public async Task<IActionResult> Index()
-        {
-            var maintenanceTaskList = await _context.MaintenanceTask.ToListAsync();
-            var vehicle = await _context.Vehicle.ToListAsync();
+        {         
+            var MaintenanceTaskList = await (
+                    from mt in _context.MaintenanceTask
+                    join v in _context.Vehicle
+                    on mt.VehicleId
+                    equals v.VehicleId
+                    select new MaintenanceTask
+                    {
+                        VehicleFullName = v.FullName,
+                        MaintenanceTaskId = mt.MaintenanceTaskId,
+                        VehicleId = mt.VehicleId,
+                        MaintenanceTaskTitle = mt.MaintenanceTaskTitle,
+                        MaintenanceTaskDescription = mt.MaintenanceTaskDescription,
+                        TaskDueAtMileage = mt.TaskDueAtMileage,
+                        IsComplete = mt.IsComplete,
+                        TargetCompleteDate = mt.TargetCompleteDate
+                    }).OrderBy(mt => mt.TaskDueAtMileage).ToListAsync();
 
-            ViewBag.vehicle = vehicle;
-
-            return View(maintenanceTaskList);
+            return View(MaintenanceTaskList);
 
             //var maintenanceTaskList = await _context.MaintenanceTask.ToListAsync();
             //foreach (var item in maintenanceTaskList)
@@ -40,13 +52,7 @@ namespace LugNutzPremium.Controllers
             //    ViewBag.VehicleFullName = Vehicle.FullName;
             //}
 
-            //return View(maintenanceTaskList);
-
-            //var maintenanceTaskList = await _context.maintenanceTask.Include(m => m.User).OrderByDescending(m => m.CreatedDate).ToListAsync();
-            //var currentUser = await GetCurrentUserAsync();
-            //ViewBag.currentUser = currentUser;
-
-            //return View(maintenanceTaskList);
+            //return View(maintenanceTaskList);            
 
             //var maintenanceTaskList = await _context.MaintenanceTask.OrderByDescending(m => m.CreatedDate).ToListAsync();
             //var vehicle = await _context.Vehicle.ToListAsync();
@@ -86,6 +92,7 @@ namespace LugNutzPremium.Controllers
                     Value = v.VehicleId.ToString()
                 }).ToListAsync()
             };
+
             return View(maintenanceTask);
         }
 

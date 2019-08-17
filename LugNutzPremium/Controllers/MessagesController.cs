@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LugNutzPremium.Data;
+﻿using LugNutzPremium.Data;
 using LugNutzPremium.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LugNutzPremium.Controllers
 {
     [Authorize]
     public class MessagesController : Controller
-    {        
+    {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
@@ -24,7 +21,7 @@ namespace LugNutzPremium.Controllers
             _context = context;
             _userManager = userManager;
         }
-        
+
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
 
@@ -36,6 +33,7 @@ namespace LugNutzPremium.Controllers
 
             //var messageList = await _context.Message.Include(m => m.User).ToListAsync();
             //List<Message> SortedList = messageList.OrderByDescending(m => m.CreatedDate).ToList();
+            //var currentUser = await GetCurrentUserAsync();
             //ViewBag.currentUser = currentUser;
 
             //return View(messageList);
@@ -56,7 +54,7 @@ namespace LugNutzPremium.Controllers
 
         // GET: Messages/Create
         public ActionResult Create()
-        {         
+        {
             return View();
         }
 
@@ -89,7 +87,7 @@ namespace LugNutzPremium.Controllers
             if (message == null)
             {
                 return NotFound();
-            }            
+            }
             return View(message);
         }
 
@@ -108,7 +106,7 @@ namespace LugNutzPremium.Controllers
             if (ModelState.IsValid)
             {
                 try
-                {                    
+                {
                     message.UserId = currentUser.Id;
                     _context.Update(message);
                     await _context.SaveChangesAsync();
