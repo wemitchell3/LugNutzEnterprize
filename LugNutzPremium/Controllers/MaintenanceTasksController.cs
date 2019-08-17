@@ -69,14 +69,32 @@ namespace LugNutzPremium.Controllers
                 return NotFound();
             }
 
-            var maintenanceTask = await _context.MaintenanceTask
-                .FirstOrDefaultAsync(m => m.MaintenanceTaskId == id);
-            if (maintenanceTask == null)
+            //var maintenanceTask = await _context.MaintenanceTask
+            //    .FirstOrDefaultAsync(m => m.MaintenanceTaskId == id);
+
+            var MaintenanceTaskList = await (
+                   from mt in _context.MaintenanceTask
+                   join v in _context.Vehicle
+                   on mt.VehicleId
+                   equals v.VehicleId
+                   select new MaintenanceTask
+                   {
+                       VehicleFullName = v.FullName,
+                       MaintenanceTaskId = mt.MaintenanceTaskId,
+                       VehicleId = mt.VehicleId,
+                       MaintenanceTaskTitle = mt.MaintenanceTaskTitle,
+                       MaintenanceTaskDescription = mt.MaintenanceTaskDescription,
+                       TaskDueAtMileage = mt.TaskDueAtMileage,
+                       IsComplete = mt.IsComplete,
+                       TargetCompleteDate = mt.TargetCompleteDate
+                   }).FirstOrDefaultAsync(m => m.MaintenanceTaskId == id);
+            
+            if (MaintenanceTaskList == null)
             {
                 return NotFound();
             }
 
-            return View(maintenanceTask);
+            return View(MaintenanceTaskList);
         }
 
         // GET: MaintenanceTasks/Create
