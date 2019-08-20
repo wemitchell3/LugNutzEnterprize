@@ -69,9 +69,6 @@ namespace LugNutzPremium.Controllers
                 return NotFound();
             }
 
-            //var maintenanceTask = await _context.MaintenanceTask
-            //    .FirstOrDefaultAsync(m => m.MaintenanceTaskId == id);
-
             var MaintenanceTaskList = await (
                    from mt in _context.MaintenanceTask
                    join v in _context.Vehicle
@@ -86,6 +83,7 @@ namespace LugNutzPremium.Controllers
                        MaintenanceTaskDescription = mt.MaintenanceTaskDescription,
                        TaskDueAtMileage = mt.TaskDueAtMileage,
                        IsComplete = mt.IsComplete,
+                       CreatedDate = mt.CreatedDate,
                        TargetCompleteDate = mt.TargetCompleteDate
                    }).FirstOrDefaultAsync(m => m.MaintenanceTaskId == id);
             
@@ -115,8 +113,7 @@ namespace LugNutzPremium.Controllers
         }
 
         // POST: MaintenanceTasks/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateConfirmed([Bind("MaintenanceTaskId,VehicleId,MaintenanceTaskTitle,MaintenanceTaskDescription,TaskDueAtMileage,IsComplete,TargetCompleteDate")] MaintenanceTask maintenanceTask)
@@ -156,8 +153,7 @@ namespace LugNutzPremium.Controllers
         }
 
         // POST: MaintenanceTasks/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("MaintenanceTaskId,VehicleId,MaintenanceTaskTitle,MaintenanceTaskDescription,TaskDueAtMileage,IsComplete,CreatedDate,TargetCompleteDate")] MaintenanceTask maintenanceTask)

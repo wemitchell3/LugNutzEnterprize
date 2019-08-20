@@ -34,7 +34,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @ViewBag.VehicleFullName
+                @Html.DisplayFor(modelItem => item.VehicleFullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.WishListTitle)

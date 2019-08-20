@@ -47,7 +47,7 @@ namespace LugNutzPremium.Controllers
         }
 
         // GET: Messages/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details()
         {
             return View();
         }
