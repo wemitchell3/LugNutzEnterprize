@@ -26,14 +26,32 @@ namespace LugNutzPremium.Controllers
         // GET: WishLists
         public async Task<IActionResult> Index()
         {
-            var wishList = await _context.WishList.ToListAsync();
-            foreach (var item in wishList)
-            {
-                var Vehicle = await _context.Vehicle.FindAsync(item.VehicleId);
-                ViewBag.VehicleFullName = Vehicle.FullName;
-            }
+            var WishListList = await (
+                    from wl in _context.WishList
+                    join v in _context.Vehicle
+                    on wl.VehicleId
+                    equals v.VehicleId
+                    select new WishList
+                    {
+                        VehicleFullName = v.FullName,
+                        WishListId = wl.WishListId,
+                        VehicleId = wl.VehicleId,
+                        WishListTitle = wl.WishListTitle,
+                        WishListDescription = wl.WishListDescription,
+                        CreatedDate = wl.CreatedDate,
+                        IsComplete = wl.IsComplete
+                    }).OrderBy(wl => wl.CreatedDate).ToListAsync();
 
-            return View(wishList);
+            return View(WishListList);
+
+            //var wishList = await _context.WishList.ToListAsync();
+            //foreach (var item in wishList)
+            //{
+            //    var Vehicle = await _context.Vehicle.FindAsync(item.VehicleId);
+            //    ViewBag.VehicleFullName = Vehicle.FullName;
+            //}
+
+            //return View(wishList);
         }
 
             // GET: WishLists/Details/5
@@ -74,7 +92,7 @@ namespace LugNutzPremium.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateConfirmed([Bind("WishListId,VehicleId,WishListTitle,WishListDescription,IsComplete,CreatedDate")] WishList wishList)
+        public async Task<IActionResult> CreateConfirmed([Bind("WishListId,VehicleId,WishListTitle,WishListDescription,IsComplete")] WishList wishList)
         {            
             if (ModelState.IsValid)
             {
